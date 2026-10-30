@@ -33,6 +33,10 @@ namespace LastWorld
 
         public static void BossDefeated()
         {
+            // Aim the first shot at where the Guardian actually fell (its corpse stays for the cinematic).
+            var boss = Object.FindObjectsByType<EnemyBase>().FirstOrDefault(e => e.killTag == "boss");
+            var aim = CinematicDirector.Instance ? CinematicDirector.Instance.transform.Find("CIN_04_PremierVent/Gardien") : null;
+            if (boss && aim) aim.position = boss.transform.position + Vector3.up * 1.5f;
             CinematicDirector.Play("CIN_04_PremierVent", () => GameUI.Banner("Le Vent-Clair est libéré", Elements.Color(Element.Anemo)));
         }
 

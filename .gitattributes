@@ -169,3 +169,7 @@ Packages/packages-lock.json linguist-generated
 
 # Exceptions for .asset files such as lightning pre-baking
 LightingData.asset     binary
+
+# Terrain data is serialized in binary even with Force Text: never touch its line endings
+Assets/_Game/Generated/WorldTerrain.asset lfs -eol -unity-yaml
+*.terrainData.asset     lfs -eol -unity-yaml

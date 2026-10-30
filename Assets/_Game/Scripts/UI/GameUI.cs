@@ -319,6 +319,7 @@ namespace LastWorld
         {
             var line = dialogueLines[dialogueIndex];
             dialogueSpeaker.text = line.speaker;
+            dialogueText.text = "";
             typeT = 0f;
             foreach (Transform c in choiceRoot) Destroy(c.gameObject);
             if (line.choices != null)
@@ -347,12 +348,30 @@ namespace LastWorld
             dialogueText.text = line.text.Substring(0, n);
             bool advance = (kb != null && (kb.fKey.wasPressedThisFrame || kb.spaceKey.wasPressedThisFrame || kb.enterKey.wasPressedThisFrame))
                            || (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame && line.choices == null);
-            if (!advance) return;
-            if (n < line.text.Length) { typeT = line.text.Length; return; }
+            if (advance) AdvanceDialogue();
+        }
+
+        /// <summary>Completes the line being typed, or moves to the next one (F / Space / Enter / click).</summary>
+        public void AdvanceDialogue()
+        {
+            if (!DialogueOpen) return;
+            var line = dialogueLines[dialogueIndex];
+            if (dialogueText.text.Length < line.text.Length) { typeT = line.text.Length; dialogueText.text = line.text; return; }
             if (line.choices != null) return;
             dialogueIndex++;
             if (dialogueIndex >= dialogueLines.Count) EndDialogue();
             else ShowLine();
+        }
+
+        /// <summary>Picks a dialogue choice by index (same as clicking its button).</summary>
+        public void ChooseDialogueOption(int index)
+        {
+            if (!DialogueOpen) return;
+            var choices = dialogueLines[dialogueIndex].choices;
+            if (choices == null || index < 0 || index >= choices.Count) return;
+            var action = choices[index].action;
+            action?.Invoke();
+            if (action == null) EndDialogue();
         }
 
         void EndDialogue()

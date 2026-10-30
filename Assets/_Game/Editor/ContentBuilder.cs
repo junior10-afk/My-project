@@ -130,10 +130,11 @@ namespace LastWorld.EditorTools
                 {
                     weapons[i] = Sword(defs[i].element);
                     weapons[i].transform.SetParent(hand, false);
-                    weapons[i].transform.localPosition = Vector3.zero;
-                    // Orient the blade along the character's forward when the arm hangs down (adjusted at runtime by the pose).
-                    weapons[i].transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.forward) * Quaternion.Euler(0f, 0f, 0f);
-                    weapons[i].transform.position = hand.position;
+                    // In the bind pose the arm is stretched sideways, palm down, thumb forward: a fist grip
+                    // points the blade along the thumb (character forward), edge vertical, handle in the palm.
+                    var body = inst.transform;
+                    weapons[i].transform.SetPositionAndRotation(hand.position + body.right * 0.07f - body.up * 0.03f,
+                        Quaternion.LookRotation(body.forward, body.up));
                     if (layer >= 0) foreach (var t in weapons[i].GetComponentsInChildren<Transform>(true)) t.gameObject.layer = layer;
                     weapons[i].SetActive(false);
                 }
@@ -186,6 +187,11 @@ namespace LastWorld.EditorTools
                 var a = altar.GetComponent<Altar>() ?? altar.AddComponent<Altar>();
                 a.id = "altar";
                 a.range = 6.5f;
+                // The mossy wall texture reads as a black mass on the 5 m pillar: use the plinth's dressed stone.
+                var dressed = ArtLibrary.SurfaceMaterial("medieval_blocks_02");
+                foreach (Transform part in altar.transform)
+                    if (part.name is "Pilier" or "Colonnette" && part.TryGetComponent<MeshRenderer>(out var mr))
+                        mr.sharedMaterial = dressed;
             }
             var group = GameObject.Find("Points de téléportation");
             if (!group) return;
@@ -270,9 +276,12 @@ namespace LastWorld.EditorTools
             Prop("kite_shield", new Vector3(-9.4f, 0f, 5.2f), 120f, false);
             Lamp(Prop("wooden_lantern_01", new Vector3(-9.6f, 0f, 8.6f), 0f, false), 0.3f);
 
-            // Altar (c + (0, 14), 8 m plinth): offering jars beside the steps
-            Prop("ceramic_pot", new Vector3(-3f, 0f, 9.4f), 0f);
-            Prop("ceramic_pot", new Vector3(3f, 0f, 9.4f), 140f);
+            // Altar (c + (0, 14), 8 m plinth): large offering jars beside the steps (the pot model is a 30 cm vase)
+            foreach (var (x, yaw) in new[] { (-3f, 0f), (3f, 140f) })
+            {
+                var jar = Prop("ceramic_pot", new Vector3(x, 0f, 9.4f), yaw);
+                if (jar) jar.transform.localScale = Vector3.one * 1.6f;
+            }
         }
 
         static void Spawn(string model, string id, string displayName, string title, Vector3 pos, Vector3 lookAt, Transform parent)
@@ -575,7 +584,7 @@ namespace LastWorld.EditorTools
             capsule.radius = 0.8f * s;
             capsule.height = 2.6f * s;
             var h = root.AddComponent<Health>();
-            h.maxHealth = boss ? 4000f : 1300f;
+            h.maxHealth = boss ? 5400f : 1300f; // v0.1.1: the boss fell in ~30 s in play-tests
             h.defense = boss ? 0.5f : 0.45f;
             h.maxPoise = boss ? 220f : 90f;
             h.displayName = boss ? "Gardien Ancien" : "Gardien de pierre";

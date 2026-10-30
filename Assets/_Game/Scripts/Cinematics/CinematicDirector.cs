@@ -33,9 +33,10 @@ namespace LastWorld
         ThirdPersonCamera orbit;
 
         Image fade, barTop, barBottom, skipFill;
-        Text subtitle, speaker;
+        Text subtitle, speaker, titleCard;
         CanvasGroup skipGroup;
-        float bars, skipHold;
+        float bars, skipHold, titleTime = 99f;
+        const float TitleDuration = 3.5f;
 
         static readonly Color Accent = new(0.95f, 0.82f, 0.5f);
 
@@ -57,6 +58,8 @@ namespace LastWorld
 
         /// <summary>Id of the cinematic playing right now, or null.</summary>
         public static string CurrentId => Instance && Instance.currentRoot ? Instance.currentRoot.name : null;
+
+        public static bool IsCurrent(PlayableDirector director) => director && Instance && Instance.current == director;
 
         /// <summary>Skips the current cinematic (same as holding Escape).</summary>
         public static void SkipCurrent()
@@ -116,9 +119,11 @@ namespace LastWorld
         void StartCinematic(Transform root)
         {
             CloseCurrent();
-            root.gameObject.SetActive(true);
+            // Register the cinematic before activating it: enabling the director can evaluate frame 0,
+            // and actions at t=0 ("show:Kael") must already resolve their marks.
             currentRoot = root;
             current = root.GetComponent<PlayableDirector>();
+            root.gameObject.SetActive(true);
 
             var cam = Camera.main;
             if (cam)
@@ -137,6 +142,7 @@ namespace LastWorld
             SetSubtitle(null, null);
             skipHold = 0f;
             current.stopped += OnStopped;
+            current.RebuildGraph(); // fresh behaviours: one-shot actions fire again on replay
             current.time = 0;
             current.Play();
         }
@@ -195,6 +201,14 @@ namespace LastWorld
                 barBottom.rectTransform.anchorMax = new Vector2(1f, h);
             }
 
+            if (titleCard)
+            {
+                titleTime += Time.unscaledDeltaTime;
+                var tc = titleCard.color;
+                tc.a = Playing ? Mathf.Clamp01(Mathf.Min(titleTime / 0.6f, (TitleDuration - titleTime) / 0.8f)) : 0f;
+                titleCard.color = tc;
+            }
+
             if (!Playing) { if (skipGroup) skipGroup.alpha = 0f; return; }
             var kb = Keyboard.current;
             bool held = kb != null && (kb.escapeKey.isPressed || kb.spaceKey.isPressed)
@@ -214,7 +228,9 @@ namespace LastWorld
         Transform Mark(string name)
         {
             if (!currentRoot) return null;
-            return currentRoot.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == name);
+            // Actors and marks sit directly under the cinematic: prefer them over same-named nested objects (shot cameras).
+            var direct = currentRoot.Find(name);
+            return direct ? direct : currentRoot.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == name);
         }
 
         void Execute(string action)
@@ -253,8 +269,9 @@ namespace LastWorld
                 case "sound":
                     AudioManager.Play(arg);
                     break;
-                case "banner":
-                    GameUI.Banner(arg, Accent);
+                case "banner": // title card on the cinematic overlay (the HUD banner is hidden during cinematics)
+                    titleCard.text = arg;
+                    titleTime = 0f;
                     break;
             }
         }
@@ -275,6 +292,8 @@ namespace LastWorld
             var root = (RectTransform)canvasGo.transform;
             var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
 
+            // Draw order: fade (covers the scene) < letterbox < subtitles < skip hint
+            fade = MakeImage(root, "Fondu", Color.clear, Vector2.zero, Vector2.one);
             barTop = MakeImage(root, "Bande haut", Color.black, new Vector2(0f, 1f), Vector2.one);
             barBottom = MakeImage(root, "Bande bas", Color.black, Vector2.zero, new Vector2(1f, 0f));
 
@@ -282,9 +301,9 @@ namespace LastWorld
             speaker.fontStyle = FontStyle.Bold;
             subtitle = MakeText(root, font, 32, Color.white, new Vector2(0.5f, 0.1f));
             subtitle.rectTransform.sizeDelta = new Vector2(1500f, 90f);
-
-            fade = MakeImage(root, "Fondu", Color.clear, Vector2.zero, Vector2.one);
-            fade.raycastTarget = false;
+            titleCard = MakeText(root, font, 54, new Color(Accent.r, Accent.g, Accent.b, 0f), new Vector2(0.5f, 0.72f));
+            titleCard.fontStyle = FontStyle.Bold;
+            titleCard.rectTransform.sizeDelta = new Vector2(1600f, 80f);
 
             var skip = new GameObject("Passer", typeof(RectTransform), typeof(CanvasGroup));
             skip.transform.SetParent(root, false);

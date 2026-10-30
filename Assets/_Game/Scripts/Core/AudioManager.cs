@@ -94,13 +94,21 @@ namespace LastWorld
             }
         }
 
+        readonly Dictionary<string, float> lastPlayed = new();
+
         public static void Play(string id, float pitch = 1f)
         {
             if (!Instance || !Instance.clips.TryGetValue(id, out var clip)) return;
+            // Multi-hit attacks fire the same sound many times per frame: skip near-duplicates, and give each
+            // pooled source a single voice so busy fights never exhaust the mixer's channels.
+            float now = Time.unscaledTime;
+            if (Instance.lastPlayed.TryGetValue(id, out var last) && now - last < 0.04f) return;
+            Instance.lastPlayed[id] = now;
             var s = Instance.sfx[Instance.next++ % Instance.sfx.Count];
             s.pitch = pitch * Random.Range(0.95f, 1.05f);
             s.volume = Instance.sfxVolume;
-            s.PlayOneShot(clip);
+            s.clip = clip;
+            s.Play();
         }
 
         // ---------------------------------------------------------------- Synthesis

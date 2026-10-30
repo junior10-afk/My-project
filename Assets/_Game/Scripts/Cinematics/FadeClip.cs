@@ -42,7 +42,9 @@ namespace LastWorld
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
-            // Hold the final value once the clip has fully played.
+            // Hold the final value once the clip has fully played — only while its own cinematic is the one
+            // playing: the graph is torn down after CinematicDirector has already cleared the screen.
+            if (!CinematicDirector.IsCurrent(playable.GetGraph().GetResolver() as PlayableDirector)) return;
             if (playable.GetTime() >= playable.GetDuration() - 0.05)
             {
                 var c = color;

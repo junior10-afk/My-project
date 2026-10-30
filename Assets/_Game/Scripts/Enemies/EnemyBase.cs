@@ -121,6 +121,8 @@ namespace LastWorld
 
             if (state == State.Dead)
             {
+                // The boss collapses in place long enough for its death cinematic (CIN_04) to frame it.
+                if (killTag == "boss" && stateTime < BossCorpseTime) return;
                 transform.position += Vector3.down * (dt * 0.6f);
                 if (body) body.localScale = Vector3.Lerp(body.localScale, Vector3.zero, dt * 2f);
                 return;
@@ -373,6 +375,7 @@ namespace LastWorld
         void OnDied(Health h)
         {
             state = State.Dead;
+            stateTime = 0f;
             foreach (var c in GetComponentsInChildren<Collider>()) c.enabled = false;
             if (barCanvas) barCanvas.gameObject.SetActive(false);
             CombatFX.Burst(transform.position + Vector3.up, Elements.Color(attackElement), 2f, 50);
@@ -384,8 +387,10 @@ namespace LastWorld
             QuestManager.ReportKill(killTag);
             var spawner = GetComponentInParent<EnemySpawner>();
             if (spawner) spawner.OnEnemyDied(this);
-            Destroy(gameObject, 3f);
+            Destroy(gameObject, killTag == "boss" ? BossCorpseTime + 3f : 3f);
         }
+
+        const float BossCorpseTime = 9f;
 
         // ---------------------------------------------------------------- World-space health bar
 

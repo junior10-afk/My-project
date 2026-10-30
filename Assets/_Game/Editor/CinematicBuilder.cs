@@ -153,8 +153,13 @@ namespace LastWorld.EditorTools
         {
             var c = Begin(parent, "CIN_00_Prologue");
             Vector3 impact = Ground(altar + new Vector3(1.5f, 0f, -6f)) + Vector3.up; // where Aelis wakes up in CIN_01
-            var star = Star(c, "Etoile", altar + new Vector3(-150f, 380f, 250f), impact, 10.5f, 19f);
+            Vector3 starFrom = altar + new Vector3(-90f, 170f, 150f);
+            Star(c, "Etoile", starFrom, impact, 10.5f, 19f);
             var horizon = Target(c, "Horizon", altar + new Vector3(260f, 30f, 640f));
+            // Static framings: the star crosses the frame (tracking a fast object smears it with motion blur)
+            // Wide view from 110 m: horizon + the whole fall inside the DOF's sharp range (< 350 m)
+            var skyPath = Target(c, "Trajectoire", altar + new Vector3(-20f, 55f, 40f));
+            var landing = Target(c, "Point de chute", impact + Vector3.up * 2.5f);
             Mark(c, "Impact", impact, 0f);
 
             Act(c, 0f, "player:hide", true);
@@ -164,9 +169,9 @@ namespace LastWorld.EditorTools
             Sub(c, 1f, 5.5f, Voice, "Il y avait autrefois mille mondes. Ils se sont éteints comme des bougies, sans un bruit.");
             Sub(c, 7f, 4f, Voice, "Il n'en reste qu'un.");
 
-            Shot(c, "L'étoile", 11f, 5f, altar + new Vector3(12f, 3f, -20f), altar + new Vector3(11f, 2.6f, -19f), star, 42f);
+            Shot(c, "L'étoile", 11f, 5f, Ground(impact + new Vector3(35f, 0f, -105f)) + Vector3.up * 6f, Ground(impact + new Vector3(32f, 0f, -99f)) + Vector3.up * 6f, skyPath, 50f, 0f, false);
             Sub(c, 12f, 5.5f, Voice, "Si tu entends ma voix… alors le Sceau est brisé.");
-            Shot(c, "L'impact", 16f, 7f, impact + new Vector3(5f, 1.2f, -6f), impact + new Vector3(3.5f, 0.8f, -4.2f), star, 38f);
+            Shot(c, "L'impact", 16f, 7f, impact + new Vector3(7f, 1.6f, -9f), impact + new Vector3(6f, 1.4f, -8f), landing, 45f);
             Sub(c, 18f, 3.5f, Voice, "Pardonne-moi. Réveille-toi… Aelis.");
 
             Act(c, 19f, "burst:Impact:Anemo");
@@ -206,7 +211,8 @@ namespace LastWorld.EditorTools
         static void Resonance(Transform parent, Vector3 altar, Vector3 tower)
         {
             var c = Begin(parent, "CIN_02_Resonance");
-            Vector3 p = Ground(altar + new Vector3(0f, 0f, -3f)); // on the plinth, facing the pillar
+            // On the plinth, facing the pillar — clear of the 5.6 m step (at 3.0 m the capsule caught its edge)
+            Vector3 p = Ground(altar + new Vector3(0f, 0f, -3.5f));
             Mark(c, "AltarMark", p, 0f);
             tower = Ground(tower + new Vector3(-2.2f, 0f, -1.8f)); // beside the chest at the top
             Mark(c, "AltarFX", altar + Vector3.up * 3f, 0f);
@@ -225,7 +231,8 @@ namespace LastWorld.EditorTools
                 Fragment(c, $"Fragment {i}", elems[i], tower + Vector3.up * 3f, tower + Vector3.up * 3f + dirs[i].normalized * 380f, 10f, 14f, false);
 
             Act(c, 0f, "place:AltarMark", true);
-            Shot(c, "La main", 0f, 4f, p + new Vector3(1.1f, 1.7f, -1.6f), p + new Vector3(0.8f, 1.6f, -1.2f), altarTarget, 40f);
+            var contact = Target(c, "Contact", p + new Vector3(0f, 1.3f, 1f)); // between Aelis and the pillar
+            Shot(c, "La main", 0f, 4f, p + new Vector3(-2.6f, 1.5f, 0.2f), p + new Vector3(-2.2f, 1.5f, 0.45f), contact, 42f);
             Act(c, 1.5f, "burst:AltarFX:Anemo");
             Act(c, 1.5f, "sound:skill");
             Fade(c, 3.2f, 0.8f, Color.white, 0f, 1f);
@@ -331,7 +338,7 @@ namespace LastWorld.EditorTools
             Fade(c, 0f, 2f, Color.black, 1f, 0f);
             Shot(c, "Au bord du monde", 0f, 7f, edge - outDir * 6f + Vector3.up * 2.5f, edge - outDir * 4f + Vector3.up * 2f, horizon, 45f);
             Sub(c, 1.5f, 4.5f, "Kael", "Tu as toujours été têtue, petite sœur.");
-            Shot(c, "Kael", 7f, 6f, edge + outDir * 1.4f + right * 0.4f + Vector3.up * 1.7f, edge + outDir * 1.1f + right * 0.3f + Vector3.up * 1.68f, head, 30f);
+            Shot(c, "Gros plan Kael", 7f, 6f, edge + outDir * 1.4f + right * 0.4f + Vector3.up * 1.7f, edge + outDir * 1.1f + right * 0.3f + Vector3.up * 1.68f, head, 30f);
             Sub(c, 7.5f, 5f, "Kael", "Cette fois, je ne te laisserai pas te sacrifier. Même si ce monde doit s'éteindre.");
             Shot(c, "Le dernier monde", 13f, 9f, edge + outDir * 30f + Vector3.up * 15f, edge + outDir * 60f + Vector3.up * 40f, head, 55f, 0f, false);
             Fade(c, 16f, 2f, Color.black, 0f, 1f);
@@ -494,11 +501,11 @@ namespace LastWorld.EditorTools
 
         static Transform Star(Cine c, string name, Vector3 from, Vector3 to, float start, float end)
         {
-            var go = Glow(c, name, Elements.Color(Element.Anemo), 0.7f, 12f);
+            var go = Glow(c, name, Elements.Color(Element.Anemo), 1.3f, 25f);
             go.transform.position = from;
             var trail = go.AddComponent<TrailRenderer>();
-            trail.time = 1.6f;
-            trail.widthMultiplier = 0.9f;
+            trail.time = 0.7f;
+            trail.widthMultiplier = 0.6f;
             trail.widthCurve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
             trail.sharedMaterial = GlowMat("Trail", new Color(0.6f, 1f, 0.95f));
             trail.minVertexDistance = 0.5f;

@@ -1,8 +1,21 @@
 # Le Dernier Monde — notes de reprise
 
 Jeu open world (inspiré de Genshin Impact / Wuthering Waves), Unity 6.6 (URP, nouvel Input System).
-**Version 0.1.0** (29/10/2026) : Prologue + Chapitre I jouables avec histoire complète, narration
-réécrite et 6 cinématiques Timeline/Cinemachine. Histoire : **`STORY.md`** (bible). Crédits : `CREDITS.md`.
+**Version 0.1.1** (30/10/2026) : Prologue + Chapitre I jouables de bout en bout, testés en Play
+(boucle de test automatisée avec captures, voir plus bas). Histoire : **`STORY.md`** (bible). Crédits : `CREDITS.md`.
+
+## v0.1.1 — corrections issues des tests en jeu
+- Terrain corrompu par Git (fichier binaire traité comme texte → joueur qui tombe dans l'eau) : monde régénéré (seed 1337) + `.gitattributes` (WorldTerrain.asset en LFS, sans conversion de fins de ligne).
+- Cinématiques : fondu sous les sous-titres, plans de l'étoile recadrés (la profondeur de champ floute au-delà de 350 m), tête d'Aelis coupée (repère au bord de la marche), plan « la main » recadré, titre du boss affiché sur l'overlay, corps du boss conservé 9 s, Kael absent de l'épilogue (un plan caméra portait le même nom), écran noir après l'épilogue (fondu réappliqué à la destruction du graphe), actions à t=0 fiables.
+- Jeu : épée tenue correctement (lame vers l'avant/en garde), PV du boss +35 % (5 400 de base), audio plafonné (12 voix, anti-doublons), pilier de l'Autel en pierre claire, jarres à la bonne taille.
+- API publiques ajoutées : `GameUI.AdvanceDialogue()` / `ChooseDialogueOption(i)`, `CinematicDirector.CurrentId` / `SkipCurrent()` / `IsCurrent()`.
+
+## Tester le jeu automatiquement (MCP)
+- `LastWorld.EditorTools.GameCapture.Capture("Previews/test/x.png")` : capture 3D + UI même sans focus.
+- En Play : `EditorApplication.isPaused = true` puis boucles de `EditorApplication.Step()` (50 pas = 1 s). Plusieurs `Step()` dans une même commande fonctionnent.
+- Les entrées clavier simulées n'atteignent pas le jeu (même avec les réglages Input System) → piloter par les API publiques (Attack, TrySkill, Interact, AdvanceDialogue, Teleport…). `Attack()` exige d'être au sol : attendre ~30 pas après une téléportation.
+- Ne pas appuyer sur le vrai « Nouvelle partie » en test (efface la sauvegarde) : masquer « Titre » et appeler `StoryEvents.NewGame()`.
+- **Ne jamais modifier un script pendant le Play** : la recompilation réinitialise les singletons.
 
 ## Pipeline (menus Unity « Last World »)
 1. **Generate World** (`Assets/_Game/Editor/WorldGenerator.cs`, ~2,5 min) — terrain 2 km érodé, textures/arbres/herbe/rochers Poly Haven, eau, nuages, lumière, joueur. **Écrase `Scenes/World.unity`.**
@@ -47,7 +60,8 @@ Kael (antagoniste) = modèle du héros, tenue sombre, cheveux argentés (matéri
 - Blender se pilote en ligne de commande (`blender.exe -b`) ; MPFB : `bl_ext.user_default.mpfb`, données dans `extensions/.user/user_default/mpfb/data`.
 
 ## Non testé / à faire ensuite
-- Cinématiques vérifiées par planche contact, **pas encore jouées en conditions réelles** (vraies entrées, timing, enchaînements dialogue ↔ cinématique). Le saut (maintenir Échap) n'est pas testé au clavier.
+- Tout le Chapitre I a été joué en test automatisé (v0.1.1) ; reste à valider au vrai clavier/souris (saut des cinématiques en maintenant Échap, ressenti du combat).
+- Kaïra/Nerys/Torvan parlent lors de leur recrutement sans apparaître physiquement ; si un compagnon est actif, c'est lui qui apparaît dans les cinématiques à la place d'Aelis.
 - Les acteurs n'ont que l'animation procédurale (idle) : pas de gestes ni de lip-sync. Étape suivante : animations mocap (avatars Humanoid prêts) + AnimationTrack dans les Timelines.
 - Pas de voix (sous-titres seulement), pas de musique dédiée aux cinématiques.
 - Défauts connus : orientation de l'épée ; boss probablement trop facile ; l'heure du jour n'est pas forcée dans les cinématiques (CIN_05 devrait être de nuit).

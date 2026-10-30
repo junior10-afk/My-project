@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2920775007857521259}
   - component: {fileID: 2412332927129687510}
   - component: {fileID: 5513944193909143574}
-  - component: {fileID: 7058973254597607867}
+  - component: {fileID: 6815280887857063976}
   m_Layer: 0
   m_Name: dead_tree_trunk
   m_TagString: Untagged
@@ -91,7 +91,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7058973254597607867
+--- !u!64 &6815280887857063976
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
