@@ -49,6 +49,13 @@ namespace LastWorld
         bool ready;
 
         public bool isNPC;
+        [Tooltip("Leave the Animator running (mocap) and only override the bones while this component is enabled.")]
+        public bool overlay;
+
+        void OnEnable()
+        {
+            for (int i = 0; i < current.Length; i++) current[i] = Vector3.zero;
+        }
 
         void Start()
         {
@@ -62,7 +69,7 @@ namespace LastWorld
             rig = animator;
             ready = false;
             if (!rig || !rig.avatar || !rig.avatar.isHuman) return;
-            rig.enabled = false; // we drive the bones directly
+            if (!overlay) rig.enabled = false; // we drive the bones directly
 
             var skeleton = new Dictionary<string, SkeletonBone>();
             foreach (var sb in rig.avatar.humanDescription.skeleton) skeleton[sb.name] = sb;

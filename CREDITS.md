@@ -10,6 +10,9 @@
   (packs d'assets CC0 ; l'extension MPFB est sous GPL mais les modèles exportés sont libres).
   Vêtements : `rehmanpolanski_viking_*`, `donitz_monk_robe`, `culturalibre_heroine_suit_2`, `shoes02`.
 
+- **Quaternius** (https://quaternius.com) — Universal Animation Library 1 & 2 (CC0) : animations
+  humanoïdes du héros, des PNJ et des cinématiques (`Art/Animations/Quaternius`).
+
 ## Packages Unity
 - Universal Render Pipeline, Input System, Timeline, Cinemachine (Unity Technologies).
 

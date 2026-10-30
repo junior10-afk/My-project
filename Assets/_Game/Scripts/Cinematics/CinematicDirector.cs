@@ -61,6 +61,9 @@ namespace LastWorld
 
         public static bool IsCurrent(PlayableDirector director) => director && Instance && Instance.current == director;
 
+        /// <summary>Speaker of the subtitle on screen, or null.</summary>
+        public static string CurrentSpeaker => Playing && Instance.speaker && Instance.subtitle.text.Length > 0 ? Instance.speaker.text : null;
+
         /// <summary>Skips the current cinematic (same as holding Escape).</summary>
         public static void SkipCurrent()
         {
@@ -260,6 +263,32 @@ namespace LastWorld
                         var c = p.Length > 2 && Enum.TryParse(p[2], out Element e) ? Elements.Color(e) : Elements.Color(Element.Anemo);
                         CombatFX.Burst(m.position, c, 4f, 90);
                         CombatFX.Ring(m.position, 10f, c, 0.8f);
+                    }
+                    break;
+                case "anim": // "anim:player|Actor:State[:seconds]" plays a mocap state on the hero or an actor
+                    if (p.Length < 3) break;
+                    float dur = p.Length > 3 && float.TryParse(p[3], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var sec)
+                        ? sec : AnimationLengths.Of(p[2]);
+                    if (arg == "player")
+                    {
+                        var ca = PlayerController.Instance ? PlayerController.Instance.GetComponent<CharacterAnimator>() : null;
+                        if (ca) ca.PlayAction(p[2], dur);
+                    }
+                    else if (m)
+                    {
+                        var npc = m.GetComponentInChildren<NpcAnimator>(true);
+                        if (npc) npc.PlayAction(p[2], dur);
+                        else HumanoidAnim.Play(m.GetComponentInChildren<Animator>(), p[2], dur);
+                    }
+                    break;
+                case "npcface": // "npcface:elara" turns a world NPC toward the hero
+                    var who = FindObjectsByType<NPC>().FirstOrDefault(n => n.id == arg);
+                    var hero = PlayerController.Instance;
+                    if (who && hero)
+                    {
+                        Vector3 to = hero.transform.position - who.transform.position;
+                        to.y = 0f;
+                        if (to.sqrMagnitude > 0.01f) who.transform.rotation = Quaternion.LookRotation(to);
                     }
                     break;
                 case "player": // "player:hide" / "player:show" toggles the hero's visual

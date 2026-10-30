@@ -110,7 +110,11 @@ namespace LastWorld
         {
             for (int i = 0; i < members.Length; i++)
                 if (members[i].model) members[i].model.SetActive(i == ActiveIndex);
-            if (anim && Active.model) anim.SetRig(Active.model.GetComponent<Animator>());
+            if (!Active.model) return;
+            var rig = Active.model.GetComponent<Animator>();
+            var mocap = GetComponent<CharacterAnimator>();
+            if (mocap) mocap.SetRig(rig);          // mocap clips, procedural only while climbing
+            else if (anim) anim.SetRig(rig);
         }
 
         public void Unlock(string memberName)

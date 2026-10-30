@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8478904953717934563
+--- !u!114 &-7382756616555787195
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FadeClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
   color: {r: 0, g: 0, b: 0, a: 1}
-  from: 1
+  from: 0
   to: 1
---- !u!114 &-2786833957577146600
+--- !u!114 &-6707984575875501241
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24,51 +24,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: 
-  text: "Chapitre II \u2014 Les Cendres de Cendrelune   \xB7   \xE0 venir"
---- !u!114 &-1766558881018854743
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
-  m_Name: FadeClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
-  color: {r: 0, g: 0, b: 0, a: 1}
-  from: 1
-  to: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
-  m_Name: CIN_05_IlTeRessemblait
-  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.TimelineAsset
-  m_Version: 0
-  m_Tracks:
-  - {fileID: 6161269005489117980}
-  - {fileID: 1546239364371480847}
-  - {fileID: 7973099732721877712}
-  - {fileID: 8455418265999340135}
-  m_FixedDuration: 0
-  m_EditorSettings:
-    m_Framerate: 60
-    m_ScenePreview: 1
-  m_DurationMode: 0
-  m_MarkerTrack: {fileID: 0}
---- !u!114 &113150705953808504
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: show:Kael
+  essential: 1
+--- !u!114 &-6276344229687122119
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,11 +41,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
   m_Name: CinemachineShot
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: Gros plan Kael
+  DisplayName: Au bord du monde
   VirtualCamera:
-    exposedName: c439215abe98f984c9d9e72e7d7469b4
+    exposedName: b7d6a351a36204a4a99f40b9cdcb1915
     defaultValue: {fileID: 0}
---- !u!114 &1546239364371480847
+--- !u!114 &-5205038680532349629
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,10 +69,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 1.5
     m_ClipIn: 0
-    m_Asset: {fileID: 8591384141283188634}
+    m_Asset: {fileID: -2528681044124503464}
     m_Duration: 4.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 1546239364371480847}
+    m_ParentTrack: {fileID: -5205038680532349629}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -177,10 +138,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 7.5
     m_ClipIn: 0
-    m_Asset: {fileID: 4207774097702919630}
+    m_Asset: {fileID: 5882695297530940289}
     m_Duration: 5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 1546239364371480847}
+    m_ParentTrack: {fileID: -5205038680532349629}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -246,10 +207,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 18.299999237060547
     m_ClipIn: 0
-    m_Asset: {fileID: -2786833957577146600}
+    m_Asset: {fileID: 3046902323571338377}
     m_Duration: 3.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 1546239364371480847}
+    m_ParentTrack: {fileID: -5205038680532349629}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -314,21 +275,7 @@ MonoBehaviour:
     m_DisplayName: "Chapitre II \u2014 Les Cendre\u2026"
   m_Markers:
     m_Objects: []
---- !u!114 &2446002029459489787
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: show:Kael
-  essential: 1
---- !u!114 &4207774097702919630
+--- !u!114 &-2528681044124503464
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,8 +288,139 @@ MonoBehaviour:
   m_Name: SubtitleClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
   speaker: Kael
-  text: "Cette fois, je ne te laisserai pas te sacrifier. M\xEAme si ce monde doit s'\xE9teindre."
---- !u!114 &4223525601590957176
+  text: "Tu as toujours \xE9t\xE9 t\xEAtue, petite s\u0153ur."
+--- !u!114 &-995906156398406143
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
+  m_Name: FadeClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
+  color: {r: 0, g: 0, b: 0, a: 1}
+  from: 1
+  to: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
+  m_Name: CIN_05_IlTeRessemblait
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.TimelineAsset
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 2572926160224811394}
+  - {fileID: -5205038680532349629}
+  - {fileID: 4516339721701339772}
+  - {fileID: 2167135400312168320}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}
+--- !u!114 &2167135400312168320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c8fafdf4dba874d963d8e068486ea1, type: 3}
+  m_Name: Actions
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionTrack
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: -6707984575875501241}
+    m_Duration: 0.20000000298023224
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 2167135400312168320}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: show:Kael
+  m_Markers:
+    m_Objects: []
+--- !u!114 &2468006468871276188
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -356,40 +434,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
   DisplayName: Le dernier monde
   VirtualCamera:
-    exposedName: a09da66527b9d5843ac625d96c8f5ffa
+    exposedName: 0a3a2cbac869b6b49a66e1a4ea8bb250
     defaultValue: {fileID: 0}
---- !u!114 &4327673003601188652
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: Au bord du monde
-  VirtualCamera:
-    exposedName: 2c17c3602359ac047a49be990041de4b
-    defaultValue: {fileID: 0}
---- !u!114 &5496871495817345193
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
-  m_Name: FadeClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
-  color: {r: 0, g: 0, b: 0, a: 1}
-  from: 0
-  to: 1
---- !u!114 &6161269005489117980
+--- !u!114 &2572926160224811394
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -413,10 +460,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 4327673003601188652}
+    m_Asset: {fileID: -6276344229687122119}
     m_Duration: 7
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 6161269005489117980}
+    m_ParentTrack: {fileID: 2572926160224811394}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -482,10 +529,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 7
     m_ClipIn: 0
-    m_Asset: {fileID: 113150705953808504}
+    m_Asset: {fileID: 5407456071451604998}
     m_Duration: 6
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 6161269005489117980}
+    m_ParentTrack: {fileID: 2572926160224811394}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -551,10 +598,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 13
     m_ClipIn: 0
-    m_Asset: {fileID: 4223525601590957176}
+    m_Asset: {fileID: 2468006468871276188}
     m_Duration: 9
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 6161269005489117980}
+    m_ParentTrack: {fileID: 2572926160224811394}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -620,7 +667,36 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   TrackPriority: 0
---- !u!114 &7973099732721877712
+--- !u!114 &3046902323571338377
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: 
+  text: "Chapitre II \u2014 Les Cendres de Cendrelune   \xB7   \xE0 venir"
+--- !u!114 &3103777528243720008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
+  m_Name: FadeClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
+  color: {r: 0, g: 0, b: 0, a: 1}
+  from: 1
+  to: 1
+--- !u!114 &4516339721701339772
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -644,10 +720,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -1766558881018854743}
+    m_Asset: {fileID: -995906156398406143}
     m_Duration: 2
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 7973099732721877712}
+    m_ParentTrack: {fileID: 4516339721701339772}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -713,10 +789,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 16
     m_ClipIn: 0
-    m_Asset: {fileID: 5496871495817345193}
+    m_Asset: {fileID: -7382756616555787195}
     m_Duration: 2
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 7973099732721877712}
+    m_ParentTrack: {fileID: 4516339721701339772}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -782,10 +858,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 18
     m_ClipIn: 0
-    m_Asset: {fileID: -8478904953717934563}
+    m_Asset: {fileID: 3103777528243720008}
     m_Duration: 4
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 7973099732721877712}
+    m_ParentTrack: {fileID: 4516339721701339772}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -850,7 +926,7 @@ MonoBehaviour:
     m_DisplayName: "\xC9cran"
   m_Markers:
     m_Objects: []
---- !u!114 &8455418265999340135
+--- !u!114 &5407456071451604998
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -859,90 +935,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19c8fafdf4dba874d963d8e068486ea1, type: 3}
-  m_Name: Actions
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionTrack
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 0
-    m_ClipIn: 0
-    m_Asset: {fileID: 2446002029459489787}
-    m_Duration: 0.20000000298023224
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 8455418265999340135}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: show:Kael
-  m_Markers:
-    m_Objects: []
---- !u!114 &8591384141283188634
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
+  DisplayName: Gros plan Kael
+  VirtualCamera:
+    exposedName: a4cb223cdcf4a1047845453c0b83f9c2
+    defaultValue: {fileID: 0}
+--- !u!114 &5882695297530940289
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -955,4 +955,4 @@ MonoBehaviour:
   m_Name: SubtitleClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
   speaker: Kael
-  text: "Tu as toujours \xE9t\xE9 t\xEAtue, petite s\u0153ur."
+  text: "Cette fois, je ne te laisserai pas te sacrifier. M\xEAme si ce monde doit s'\xE9teindre."

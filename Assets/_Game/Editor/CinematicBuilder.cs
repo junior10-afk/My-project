@@ -197,11 +197,15 @@ namespace LastWorld.EditorTools
 
             Act(c, 0f, "place:PlayerMark", true);
             Act(c, 0f, "player:show", true);
+            Act(c, 0.05f, "anim:player:LayToIdle:3.6"); // Aelis gets up from the grass
+            Act(c, 0.05f, "npcface:elara", true);
             Fade(c, 0f, 3f, Color.white, 1f, 0f);
-            Shot(c, "Visage", 0f, 5f, p + fwd * 0.9f + Vector3.up * 1.6f, p + fwd * 1.6f + Vector3.up * 1.7f, head, 35f);
+            var body = Target(c, "Corps", p + Vector3.up * 0.4f);
+            Shot(c, "Au sol", 0f, 3.2f, p + fwd * 1.7f + right * 0.9f + Vector3.up * 1.6f, p + fwd * 1.5f + right * 0.7f + Vector3.up * 1.8f, body, 40f);
+            Shot(c, "Visage", 3.2f, 2.3f, p + fwd * 1.0f + Vector3.up * 1.62f, p + fwd * 1.4f + Vector3.up * 1.68f, head, 35f);
             Sub(c, 1.5f, 3f, "Elara", "Doucement… N'essaie pas de te lever trop vite.");
-            Shot(c, "Elara", 5f, 4f, p - fwd * 1.2f + right * 0.5f + Vector3.up * 1.75f, p - fwd * 1.1f + right * 0.45f + Vector3.up * 1.72f, elaraHead, 32f);
-            Sub(c, 5.5f, 3.2f, "Elara", "Le vent t'a déposé ici cette nuit. Bienvenue sur Aerendal.");
+            Shot(c, "Elara", 5.5f, 3.5f, p - fwd * 1.2f + right * 0.5f + Vector3.up * 1.75f, p - fwd * 1.1f + right * 0.45f + Vector3.up * 1.72f, elaraHead, 32f);
+            Sub(c, 5.8f, 3.0f, "Elara", "Le vent t'a déposé ici cette nuit. Bienvenue sur Aerendal.");
             Shot(c, "Les Prairies", 9f, 6f, p + new Vector3(-4f, 2f, -6f), p + new Vector3(-18f, 22f, -40f), altarTop, 55f, 0f, false);
             End(c);
         }
@@ -219,7 +223,7 @@ namespace LastWorld.EditorTools
             var altarTarget = Target(c, "Autel", altar + Vector3.up * 2.5f);
             var head = Target(c, "Tête Aelis", p + Vector3.up * 1.62f);
 
-            var kael = Kael(c, tower, 250f);
+            var kael = Kael(c, tower, 250f, true);
             var kaelHead = Target(c, "Tête Kael", tower + Vector3.up * 1.62f);
             Mark(c, "KaelFX", tower + Vector3.up * 2f, 0f);
             var sky = Target(c, "Ciel", tower + Vector3.up * 25f);
@@ -233,6 +237,7 @@ namespace LastWorld.EditorTools
             Act(c, 0f, "place:AltarMark", true);
             var contact = Target(c, "Contact", p + new Vector3(0f, 1.3f, 1f)); // between Aelis and the pillar
             Shot(c, "La main", 0f, 4f, p + new Vector3(-2.6f, 1.5f, 0.2f), p + new Vector3(-2.2f, 1.5f, 0.45f), contact, 42f);
+            Act(c, 0.3f, "anim:player:Interact:2.6");
             Act(c, 1.5f, "burst:AltarFX:Anemo");
             Act(c, 1.5f, "sound:skill");
             Fade(c, 3.2f, 0.8f, Color.white, 0f, 1f);
@@ -241,6 +246,8 @@ namespace LastWorld.EditorTools
             Fade(c, 4f, 1f, Color.white, 1f, 0f);
             Shot(c, "Le traître", 4f, 6f, tower + new Vector3(6f, 2f, -4f), tower + new Vector3(-5f, 3f, -6f), kaelHead, 40f);
             Sub(c, 5f, 4f, "???", "Pardonne-moi, petite sœur. Je ne te laisserai pas pourrir là-dedans une éternité de plus.");
+            Act(c, 4.2f, "anim:Kael:SwordIdle:4.2");
+            Act(c, 8.6f, "anim:Kael:Attack4:1.4"); // the blow that shatters the Seal
             Act(c, 9.5f, "burst:KaelFX:Electro");
             Act(c, 9.5f, "sound:slam");
             for (int i = 0; i < 4; i++) Act(c, 9.8f, $"show:Fragment {i}");
@@ -551,7 +558,7 @@ namespace LastWorld.EditorTools
         }
 
         /// <summary>Kael: the hero's model, dark-clothed and silver-haired — the same face, five centuries older at heart.</summary>
-        static GameObject Kael(Cine c, Vector3 pos, float yaw)
+        static GameObject Kael(Cine c, Vector3 pos, float yaw, bool armed = false)
         {
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>($"{CharacterImporter.PrefabDir}/Hero.prefab");
             var root = new GameObject("Kael");
@@ -564,9 +571,21 @@ namespace LastWorld.EditorTools
                 inst.transform.localRotation = Quaternion.identity;
                 foreach (var r in inst.GetComponentsInChildren<Renderer>(true))
                     r.sharedMaterials = r.sharedMaterials.Select(KaelMaterial).ToArray();
-                var anim = root.AddComponent<ProceduralAnimator>();
-                anim.isNPC = true;
-                anim.rig = inst.GetComponent<Animator>();
+                var rig = inst.GetComponent<Animator>();
+                rig.runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(AnimationSetup.ControllerPath);
+                var anim = root.AddComponent<NpcAnimator>();
+                anim.rig = rig;
+                anim.idleState = "FoldArms";
+                anim.speakerName = "Kael";
+                // His storm-violet blade, gripped like the heroes' (bind pose: blade along the thumb)
+                var hand = rig.GetBoneTransform(HumanBodyBones.RightHand);
+                if (hand && armed)
+                {
+                    var sword = ContentBuilder.Sword(Element.Electro);
+                    sword.transform.SetParent(hand, false);
+                    var body = inst.transform;
+                    sword.transform.SetPositionAndRotation(hand.position + body.right * 0.07f - body.up * 0.03f, Quaternion.LookRotation(body.forward, body.up));
+                }
             }
             root.SetActive(false);
             return root;

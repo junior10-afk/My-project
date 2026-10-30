@@ -12,6 +12,8 @@ namespace LastWorld
     public static class DialogueSystem
     {
         public static bool Active => GameUI.Instance && GameUI.Instance.DialogueOpen;
+        /// <summary>Name of the character speaking the current dialogue line, or null.</summary>
+        public static string CurrentSpeaker => Active ? GameUI.Instance.CurrentSpeaker : null;
         public static void Show(List<DialogueLine> lines, Action onDone) => GameUI.Instance?.ShowDialogue(lines, onDone);
     }
 
@@ -31,6 +33,7 @@ namespace LastWorld
         public Vector2 worldSize = new(2048f, 2048f);
 
         public bool DialogueOpen => dialoguePanel && dialoguePanel.activeSelf;
+        public string CurrentSpeaker => dialogueSpeaker ? dialogueSpeaker.text : null;
 
         Font font;
         RectTransform root;

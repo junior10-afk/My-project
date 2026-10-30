@@ -32,6 +32,7 @@ namespace LastWorld.EditorTools
             ArtLibrary.EnsureFolder(PrefabDir);
             ArtLibrary.EnsureFolder(MatDir);
             CharacterImporter.ImportAll();
+            AnimationSetup.Build();
 
             var terrain = Object.FindAnyObjectByType<Terrain>();
             var player = Object.FindAnyObjectByType<PlayerController>();
@@ -140,9 +141,18 @@ namespace LastWorld.EditorTools
                 }
             }
 
+            // Mocap (Quaternius) drives the body; the procedural animator only overlays climbing.
+            var humanoid = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(AnimationSetup.ControllerPath);
+            foreach (var d in defs)
+                if (d.model && d.model.GetComponent<Animator>() is { } a) a.runtimeAnimatorController = humanoid;
             var animator = player.GetComponent<ProceduralAnimator>() ?? player.gameObject.AddComponent<ProceduralAnimator>();
             animator.controller = player;
             animator.rig = defs[0].model.GetComponent<Animator>();
+            animator.overlay = true;
+            var mocap = player.GetComponent<CharacterAnimator>() ?? player.gameObject.AddComponent<CharacterAnimator>();
+            mocap.controller = player;
+            mocap.climbAnimator = animator;
+            mocap.controllerAsset = humanoid;
             player.visualBob = false;
 
             var party = player.GetComponent<PartyManager>() ?? player.gameObject.AddComponent<PartyManager>();
@@ -153,7 +163,7 @@ namespace LastWorld.EditorTools
             EditorUtility.SetDirty(player.gameObject);
         }
 
-        static GameObject Sword(Element element)
+        public static GameObject Sword(Element element)
         {
             var steel = Mat("Sword_Steel", new Color(0.82f, 0.85f, 0.9f), 0.9f, 0.95f);
             var gold = Mat("Sword_Gold", new Color(0.95f, 0.75f, 0.35f), 0.8f, 0.9f);
@@ -218,8 +228,8 @@ namespace LastWorld.EditorTools
             var camp = GameObject.Find("Camp de départ");
             Vector3 basePos = camp ? camp.transform.position : Vector3.zero;
             Vector3 elaraPos = altar ? altar.transform.position + new Vector3(4.5f, 0f, -3.5f) : basePos;
-            Spawn("Elara", "elara", "Elara", "Gardienne de l'Autel", Ground(terrain, elaraPos), basePos + Vector3.back * 6f, parent);
-            Spawn("Bram", "bram", "Bram", "Marchand", Ground(terrain, basePos + new Vector3(-1f, 0f, -9.5f)), basePos, parent);
+            Spawn("Elara", "elara", "Elara", "Gardienne de l'Autel", Ground(terrain, elaraPos), basePos + Vector3.back * 6f, parent, "Idle");
+            Spawn("Bram", "bram", "Bram", "Marchand", Ground(terrain, basePos + new Vector3(-1f, 0f, -9.5f)), basePos, parent, "FoldArms");
         }
 
         /// <summary>Dresses the starting camp with Poly Haven CC0 props: Bram's stall, the campfire circle, tents and altar.</summary>
@@ -284,7 +294,7 @@ namespace LastWorld.EditorTools
             }
         }
 
-        static void Spawn(string model, string id, string displayName, string title, Vector3 pos, Vector3 lookAt, Transform parent)
+        static void Spawn(string model, string id, string displayName, string title, Vector3 pos, Vector3 lookAt, Transform parent, string idle = "Idle")
         {
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>($"{CharacterImporter.PrefabDir}/{model}.prefab");
             if (!prefab) return;
@@ -302,9 +312,12 @@ namespace LastWorld.EditorTools
             npc.displayName = displayName;
             npc.title = title;
             npc.range = 3f;
-            var anim = root.AddComponent<ProceduralAnimator>();
-            anim.isNPC = true;
-            anim.rig = inst.GetComponent<Animator>();
+            var rig = inst.GetComponent<Animator>();
+            rig.runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(AnimationSetup.ControllerPath);
+            var anim = root.AddComponent<NpcAnimator>();
+            anim.rig = rig;
+            anim.idleState = idle;
+            anim.speakerName = displayName;
             var col = root.AddComponent<CapsuleCollider>();
             col.height = 1.8f;
             col.radius = 0.3f;
