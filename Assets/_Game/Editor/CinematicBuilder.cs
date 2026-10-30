@@ -201,7 +201,9 @@ namespace LastWorld.EditorTools
             Act(c, 0.05f, "npcface:elara", true);
             Fade(c, 0f, 3f, Color.white, 1f, 0f);
             var body = Target(c, "Corps", p + Vector3.up * 0.4f);
-            Shot(c, "Au sol", 0f, 3.2f, p + fwd * 1.7f + right * 0.9f + Vector3.up * 1.6f, p + fwd * 1.5f + right * 0.7f + Vector3.up * 1.8f, body, 40f);
+            var torso = Target(c, "Torse", p + Vector3.up * 1.0f); // she rises: the framing follows her up
+            Shot(c, "Au sol", 0f, 1.6f, p + fwd * 1.7f + right * 0.9f + Vector3.up * 1.6f, p + fwd * 1.6f + right * 0.8f + Vector3.up * 1.7f, body, 40f);
+            Shot(c, "Se relève", 1.6f, 1.6f, p + fwd * 2.3f + right * 1.1f + Vector3.up * 1.3f, p + fwd * 2.1f + right * 0.9f + Vector3.up * 1.45f, torso, 45f);
             Shot(c, "Visage", 3.2f, 2.3f, p + fwd * 1.0f + Vector3.up * 1.62f, p + fwd * 1.4f + Vector3.up * 1.68f, head, 35f);
             Sub(c, 1.5f, 3f, "Elara", "Doucement… N'essaie pas de te lever trop vite.");
             Shot(c, "Elara", 5.5f, 3.5f, p - fwd * 1.2f + right * 0.5f + Vector3.up * 1.75f, p - fwd * 1.1f + right * 0.45f + Vector3.up * 1.72f, elaraHead, 32f);
@@ -312,6 +314,8 @@ namespace LastWorld.EditorTools
             Shot(c, "Dernier souffle", 0f, 5f, p + new Vector3(4f, 1.6f, -3f), p + new Vector3(3.2f, 1.5f, -2.2f), golem, 40f);
             Sub(c, 0.8f, 3.7f, "Gardien Ancien", "…Aelith ? Tu es… revenue…");
             Act(c, 4.5f, "show:Fragment");
+            Act(c, 5.2f, "anim:player:Interact:2.8"); // Aelis reaches for the rising fragment
+            Act(c, 8.3f, "anim:player:Skill:1.4");    // ...and the wind answers
             Shot(c, "Le fragment", 5f, 4.3f, p + new Vector3(-3f, 2f, 0f), p + new Vector3(-2.4f, 2.6f, 0.8f), frag, 40f);
             Act(c, 8.5f, "burst:Fragment:Anemo");
             Act(c, 8.5f, "sound:burst");
@@ -323,6 +327,7 @@ namespace LastWorld.EditorTools
             Act(c, 15.5f, "show:Kael");
             Shot(c, "Sur la falaise", 16f, 5f, p + Vector3.up * 2.5f - Flat(cliff - p) * 2f, p + Vector3.up * 2.4f - Flat(cliff - p) * 1.6f, kaelHead, 14f);
             Sub(c, 16.5f, 2.5f, "Aelis", "…Lui !");
+            Act(c, 19.2f, "anim:Kael:Skill:0.9");
             Act(c, 19.5f, "burst:KaelFX:Anemo");
             Act(c, 19.7f, "hide:Kael", true);
             End(c);

@@ -9,7 +9,9 @@ Jeu open world (inspiré de Genshin Impact / Wuthering Waves), Unity 6.6 (URP, n
 - `Scripts/Animation` : **CharacterAnimator** (héros : idle/course/saut/attaque/esquive depuis le PlayerController ; `PlayAction(state, durée)`), **NpcAnimator** (PNJ : état d'idle + gestes quand `CinematicDirector.CurrentSpeaker` = leur nom), **AnimationLengths / HumanoidAnim**. `ProceduralAnimator` passe en mode `overlay` (il ne sert plus que pour l'escalade).
 - Cinématiques : nouvelles actions `anim:player|Acteur:État[:secondes]` et `npcface:id`. CIN_01 (Aelis se relève, Elara se tourne) et CIN_02 (geste sur l'Autel, Kael en garde puis coup d'épée) animées. Kael porte une épée électro (`ContentBuilder.Sword`).
 - Testé en Play (captures) : CIN_01, CIN_02, idle / course / attaque du joueur.
-- À régler : épée de Kael fine et mal calée dans la main (plans larges), cadrage « Au sol » de CIN_01 qui coupe la tête d'Aelis, CIN_03–05 pas encore animées.
+- Épée de Kael vérifiée en gros plan : bien en main (poignée dans la paume, lame dans le prolongement) ; elle paraissait fine seulement sur les plans larges.
+- CIN_01 : cadrage en deux plans (« Au sol » puis « Se relève », visé sur le torse) pour que la tête d'Aelis reste dans le champ.
+- CIN_04 : Aelis tend la main vers le fragment (`Interact`) puis `Skill` ; Kael lance `Skill` avant de disparaître. CIN_03 n'a pas d'acteur humanoïde ; CIN_05 : Kael gesticule via `NpcAnimator` (état `Talk` pendant ses sous-titres).
 
 ## v0.1.1 — corrections issues des tests en jeu
 - Terrain corrompu par Git (fichier binaire traité comme texte → joueur qui tombe dans l'eau) : monde régénéré (seed 1337) + `.gitattributes` (WorldTerrain.asset en LFS, sans conversion de fins de ligne).
@@ -69,7 +71,7 @@ Kael (antagoniste) = modèle du héros, tenue sombre, cheveux argentés (matéri
 ## Non testé / à faire ensuite
 - Tout le Chapitre I a été joué en test automatisé (v0.1.1) ; reste à valider au vrai clavier/souris (saut des cinématiques en maintenant Échap, ressenti du combat).
 - Kaïra/Nerys/Torvan parlent lors de leur recrutement sans apparaître physiquement ; si un compagnon est actif, c'est lui qui apparaît dans les cinématiques à la place d'Aelis.
-- Animations mocap en place (v0.1.2) mais seulement sur CIN_01/02 ; animer CIN_03 (Gardien), CIN_04, CIN_05 avec l'action `anim:`. Pas de lip-sync.
+- Animations mocap en place (v0.1.2) sur CIN_01, 02, 04, 05. Pas de lip-sync.
 - Pas de voix (sous-titres seulement), pas de musique dédiée aux cinématiques.
 - Défauts connus : orientation de l'épée ; boss probablement trop facile ; l'heure du jour n'est pas forcée dans les cinématiques (CIN_05 devrait être de nuit).
 - Feuille de route : v0.2 = Chapitre II « Les Cendres de Cendrelune » (voir STORY.md §3).
