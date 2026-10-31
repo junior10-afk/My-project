@@ -17,8 +17,8 @@ namespace LastWorld.EditorTools
     /// </summary>
     public static class ContentBuilder
     {
-        const string PrefabDir = "Assets/_Game/Prefabs/Gameplay";
-        const string MatDir = "Assets/_Game/Materials/Gameplay";
+        internal const string PrefabDir = "Assets/_Game/Prefabs/Gameplay";
+        internal const string MatDir = "Assets/_Game/Materials/Gameplay";
         const string GenDir = "Assets/_Game/Generated";
         const float SeaLevel = 0.08f * 420f;
 
@@ -54,9 +54,10 @@ namespace LastWorld.EditorTools
             BuildOrbs(terrain, content);
             BuildEnemies(terrain, content, player.transform.position);
             var ui = systems.GetComponent<GameUI>();
-            ui.mapTexture = RenderMap(terrain);
             ui.worldMin = new Vector2(terrain.transform.position.x, terrain.transform.position.z);
             ui.worldSize = new Vector2(terrain.terrainData.size.x, terrain.terrainData.size.z);
+            ChapterBuilder.Build(terrain, content, player.transform.position);
+            ui.mapTexture = RenderMap(terrain); // after the chapters reshaped the island
             CinematicBuilder.Build();
 
             var scene = player.gameObject.scene;
@@ -326,7 +327,7 @@ namespace LastWorld.EditorTools
 
         // ================================================================ Chests & orbs
 
-        static GameObject ChestPrefab()
+        internal static GameObject ChestPrefab()
         {
             var wood = ArtLibrary.SurfaceMaterial("weathered_planks");
             var gold = Mat("Chest_Gold", new Color(0.95f, 0.75f, 0.35f), 0.8f, 0.9f);
@@ -352,7 +353,7 @@ namespace LastWorld.EditorTools
             return prefab;
         }
 
-        static void PlaceChest(GameObject prefab, Transform parent, string id, int tier, Vector3 pos, float yaw)
+        internal static void PlaceChest(GameObject prefab, Transform parent, string id, int tier, Vector3 pos, float yaw)
         {
             var go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, parent);
             go.transform.SetPositionAndRotation(pos, Quaternion.Euler(0f, yaw, 0f));
@@ -488,7 +489,7 @@ namespace LastWorld.EditorTools
             }
         }
 
-        static EnemySpawner Camp(Transform parent, string id, string label, Vector3 pos, GameObject[] prefabs, int count, float radius, int level)
+        internal static EnemySpawner Camp(Transform parent, string id, string label, Vector3 pos, GameObject[] prefabs, int count, float radius, int level)
         {
             var go = new GameObject($"Camp — {label} (niv. {level})");
             go.transform.SetParent(parent, false);
@@ -503,7 +504,7 @@ namespace LastWorld.EditorTools
             return s;
         }
 
-        static GameObject SlimePrefab(Element element)
+        internal static GameObject SlimePrefab(Element element)
         {
             string path = $"{PrefabDir}/Slime_{element}.prefab";
             var col = Elements.Color(element);
@@ -551,13 +552,16 @@ namespace LastWorld.EditorTools
             return prefab;
         }
 
-        static GameObject GolemPrefab(bool boss)
+        /// <summary>A golem or boss. The optional parameters make chapter variants (Colosse de Braise, Sentinelle du Bassin...).</summary>
+        internal static GameObject GolemPrefab(bool boss, string id = null, string display = null, Element? el = null, Color? core = null,
+            Color? stoneColor = null, float scaleMul = 1f, float hpMul = 1f, float dmgMul = 1f, string tag = null, string title = null)
         {
-            string path = $"{PrefabDir}/{(boss ? "Boss_GardienAncien" : "Golem")}.prefab";
-            float s = boss ? 2.3f : 1f;
-            Element element = boss ? Element.Geo : Element.Physical;
-            var coreCol = boss ? Elements.Color(Element.Geo) : new Color(1f, 0.55f, 0.25f);
-            var core = Mat(boss ? "Golem_CoreBoss" : "Golem_Core", coreCol, 0.9f, 0f, coreCol * 3f);
+            string path = $"{PrefabDir}/{id ?? (boss ? "Boss_GardienAncien" : "Golem")}.prefab";
+            float s = (boss ? 2.3f : 1f) * scaleMul;
+            Element element = el ?? (boss ? Element.Geo : Element.Physical);
+            var coreCol = core ?? (boss ? Elements.Color(Element.Geo) : new Color(1f, 0.55f, 0.25f));
+            stoneTint = stoneColor;
+            var core_ = Mat(id != null ? $"{id}_Core" : boss ? "Golem_CoreBoss" : "Golem_Core", coreCol, 0.9f, 0f, coreCol * 3f);
             var boulder = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Game/Prefabs/PolyHaven/boulder_01.prefab");
             var stone = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Game/Prefabs/PolyHaven/stone_01.prefab");
             var arm = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Game/Prefabs/PolyHaven/rock_09.prefab");
@@ -571,8 +575,8 @@ namespace LastWorld.EditorTools
             headT.SetParent(bodyT, false);
             headT.localPosition = new Vector3(0f, 0.95f * s, 0.1f * s);
             RockPart(stone, headT, Vector3.zero, Vector3.one * 0.6f * s, Quaternion.identity);
-            var glow = Part(headT, PrimitiveType.Sphere, new Vector3(0f, 0.05f * s, 0.3f * s), Vector3.one * 0.18f * s, core);
-            Part(bodyT, PrimitiveType.Sphere, new Vector3(0f, 0.1f * s, 0.55f * s), Vector3.one * 0.32f * s, core);
+            var glow = Part(headT, PrimitiveType.Sphere, new Vector3(0f, 0.05f * s, 0.3f * s), Vector3.one * 0.18f * s, core_);
+            Part(bodyT, PrimitiveType.Sphere, new Vector3(0f, 0.1f * s, 0.55f * s), Vector3.one * 0.32f * s, core_);
             AddLight(bodyT, new Vector3(0f, 0.2f * s, 0.9f * s), coreCol, 6f * s, 2f);
 
             Transform Arm(float side)
@@ -597,17 +601,17 @@ namespace LastWorld.EditorTools
             capsule.radius = 0.8f * s;
             capsule.height = 2.6f * s;
             var h = root.AddComponent<Health>();
-            h.maxHealth = boss ? 5400f : 1300f; // v0.1.1: the boss fell in ~30 s in play-tests
+            h.maxHealth = (boss ? 5400f : 1300f) * hpMul; // v0.1.1: the boss fell in ~30 s in play-tests
             h.defense = boss ? 0.5f : 0.45f;
             h.maxPoise = boss ? 220f : 90f;
-            h.displayName = boss ? "Gardien Ancien" : "Gardien de pierre";
+            h.displayName = display ?? (boss ? "Gardien Ancien" : "Gardien de pierre");
             h.barOffset = new Vector3(0f, 3.1f * s, 0f);
             var e = root.AddComponent<EnemyBase>();
             e.kind = boss ? EnemyKind.Boss : EnemyKind.Golem;
             e.attackElement = element;
             e.moveSpeed = boss ? 2.4f : 1.9f;
             e.attackRange = boss ? 5f : 2.8f;
-            e.attackDamage = boss ? 230f : 150f;
+            e.attackDamage = (boss ? 230f : 150f) * dmgMul;
             e.attackCooldown = boss ? 2.4f : 3f;
             e.windup = boss ? 1.1f : 1.0f;
             e.heavyChance = boss ? 0.55f : 0.5f;
@@ -616,7 +620,8 @@ namespace LastWorld.EditorTools
             e.xpReward = boss ? 3000 : 260;
             e.moraReward = boss ? 4000 : 180;
             e.dropItem = "golem_core";
-            e.killTag = boss ? "boss" : "golem";
+            e.killTag = tag ?? (boss ? "boss" : "golem");
+            e.bossTitle = title;
             e.body = bodyT;
             e.head = headT;
             e.armL = armL;
@@ -638,6 +643,85 @@ namespace LastWorld.EditorTools
             go.transform.localPosition = localPos;
             go.transform.localRotation = rot;
             go.transform.localScale = new Vector3(targetSize.x / Mathf.Max(0.01f, size.x), targetSize.y / Mathf.Max(0.01f, size.y), targetSize.z / Mathf.Max(0.01f, size.z));
+            if (stoneTint.HasValue)
+                foreach (var r in go.GetComponentsInChildren<Renderer>())
+                    r.sharedMaterials = r.sharedMaterials.Select(m => Tinted(m, stoneTint.Value)).ToArray();
+        }
+
+        static Color? stoneTint;
+
+        /// <summary>Copy of a material with its base colour multiplied by tint (cached as an asset).</summary>
+        internal static Material Tinted(Material src, Color tint)
+        {
+            if (!src) return src;
+            string path = $"{MatDir}/Tint_{src.name}_{ColorUtility.ToHtmlStringRGB(tint)}.mat";
+            var m = AssetDatabase.LoadAssetAtPath<Material>(path);
+            if (!m)
+            {
+                m = new Material(src);
+                AssetDatabase.CreateAsset(m, path);
+            }
+            string prop = m.HasProperty("_BaseColor") ? "_BaseColor" : "_Color";
+            m.SetColor(prop, src.GetColor(prop) * tint);
+            EditorUtility.SetDirty(m);
+            return m;
+        }
+
+        /// <summary>
+        /// A humanoid duelist boss (Kael, the Shade of Aelith): the hero model driven by mocap, with a sword.
+        /// </summary>
+        internal static GameObject DuelistPrefab(string id, string display, Element element, float hp, float damage, string tag, string title, bool kael, Color? ghost = null)
+        {
+            var model = AssetDatabase.LoadAssetAtPath<GameObject>($"{CharacterImporter.PrefabDir}/Hero.prefab");
+            var root = new GameObject(display);
+            var inst = (GameObject)PrefabUtility.InstantiatePrefab(model, root.transform);
+            inst.transform.localPosition = Vector3.zero;
+            inst.transform.localRotation = Quaternion.identity;
+            foreach (var r in inst.GetComponentsInChildren<Renderer>(true))
+                r.sharedMaterials = r.sharedMaterials.Select(m => kael ? CinematicBuilder.KaelMaterial(m) : Tinted(m, ghost ?? new Color(0.7f, 0.75f, 0.9f))).ToArray();
+            var rig = inst.GetComponent<Animator>();
+            rig.runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(AnimationSetup.ControllerPath);
+            rig.applyRootMotion = false;
+            rig.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+            var hand = rig.GetBoneTransform(HumanBodyBones.RightHand);
+            if (hand)
+            {
+                var sword = Sword(element);
+                sword.transform.SetParent(hand, false);
+                var b = inst.transform;
+                sword.transform.SetPositionAndRotation(hand.position + b.right * 0.07f - b.up * 0.03f, Quaternion.LookRotation(b.forward, b.up));
+                sword.SetActive(true);
+            }
+            var capsule = root.AddComponent<CapsuleCollider>();
+            capsule.center = new Vector3(0f, 0.95f, 0f);
+            capsule.radius = 0.4f;
+            capsule.height = 1.9f;
+            var h = root.AddComponent<Health>();
+            h.maxHealth = hp;
+            h.defense = 0.4f;
+            h.maxPoise = 160f;
+            h.displayName = display;
+            h.barOffset = new Vector3(0f, 2.4f, 0f);
+            var e = root.AddComponent<EnemyBase>();
+            e.kind = EnemyKind.Boss;
+            e.attackElement = element;
+            e.moveSpeed = 3.6f;
+            e.attackRange = 3.2f;
+            e.attackDamage = damage;
+            e.attackCooldown = 1.8f;
+            e.windup = 0.85f;
+            e.heavyChance = 0.45f;
+            e.aggroRange = 24f;
+            e.leashRange = 45f;
+            e.xpReward = 3500;
+            e.moraReward = 5000;
+            e.dropItem = "golem_core";
+            e.killTag = tag;
+            e.bossTitle = title;
+            e.rig = rig;
+            var prefab = PrefabUtility.SaveAsPrefabAsset(root, $"{PrefabDir}/{id}.prefab");
+            Object.DestroyImmediate(root);
+            return prefab;
         }
 
         // ================================================================ Map
@@ -688,7 +772,7 @@ namespace LastWorld.EditorTools
 
         // ================================================================ Helpers
 
-        static Material Mat(string name, Color color, float smooth, float metal, Color? emission = null)
+        internal static Material Mat(string name, Color color, float smooth, float metal, Color? emission = null)
         {
             var m = ArtLibrary.LoadOrCreateMaterial($"{MatDir}/{name}.mat", "Universal Render Pipeline/Lit");
             m.SetColor("_BaseColor", color);
@@ -705,7 +789,7 @@ namespace LastWorld.EditorTools
             return m;
         }
 
-        static GameObject Part(Transform parent, PrimitiveType type, Vector3 pos, Vector3 scale, Material mat, Vector3? euler = null)
+        internal static GameObject Part(Transform parent, PrimitiveType type, Vector3 pos, Vector3 scale, Material mat, Vector3? euler = null)
         {
             var g = GameObject.CreatePrimitive(type);
             Object.DestroyImmediate(g.GetComponent<Collider>());
@@ -717,9 +801,9 @@ namespace LastWorld.EditorTools
             return g;
         }
 
-        static void Box(Transform parent, Vector3 pos, Vector3 size, Material mat) => Part(parent, PrimitiveType.Cube, pos, size, mat);
+        internal static void Box(Transform parent, Vector3 pos, Vector3 size, Material mat) => Part(parent, PrimitiveType.Cube, pos, size, mat);
 
-        static void AddLight(Transform parent, Vector3 pos, Color color, float range, float intensity)
+        internal static void AddLight(Transform parent, Vector3 pos, Color color, float range, float intensity)
         {
             var l = new GameObject("Lumière").AddComponent<Light>();
             l.transform.SetParent(parent, false);
@@ -731,7 +815,7 @@ namespace LastWorld.EditorTools
             l.shadows = LightShadows.None;
         }
 
-        static Vector3 Ground(Terrain t, Vector3 p)
+        internal static Vector3 Ground(Terrain t, Vector3 p)
         {
             p.y = t.SampleHeight(p) + t.transform.position.y;
             return p;

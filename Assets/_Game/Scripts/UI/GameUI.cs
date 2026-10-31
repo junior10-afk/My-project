@@ -377,6 +377,12 @@ namespace LastWorld
             if (action == null) EndDialogue();
         }
 
+        /// <summary>Closes the dialogue from outside (a choice action that starts a cinematic), running its completion callback.</summary>
+        public void CloseDialogue()
+        {
+            if (DialogueOpen) EndDialogue();
+        }
+
         void EndDialogue()
         {
             dialoguePanel.SetActive(false);
@@ -486,11 +492,12 @@ namespace LastWorld
             float y = 0f;
             foreach (var q in QuestManager.Instance.quests)
             {
+                if (!QuestManager.Instance.IsAvailable(q)) continue; // later chapters stay secret until unlocked
                 var quest = q;
                 string label = (q.main ? "★ " : "• ") + q.title + (q.done ? "  (terminée)" : "");
-                var b = MakeButton(questsList, label, () => SelectQuest(quest), 520f, 42f);
+                var b = MakeButton(questsList, label, () => SelectQuest(quest), 520f, 40f);
                 ((RectTransform)b.transform).anchoredPosition = new Vector2(0f, y);
-                y -= 48f;
+                y -= 44f;
             }
             SelectQuest(selectedQuest ?? QuestManager.Instance.Tracked);
         }

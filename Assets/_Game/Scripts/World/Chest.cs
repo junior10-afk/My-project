@@ -30,7 +30,7 @@ namespace LastWorld
             Inventory.Add("star_crystal", new[] { 0, 5, 10, 40 }[t]);
             if (t >= 1) Inventory.Add("xp_book", t);
             if (Random.value < 0.6f) Inventory.Add("apple", 1 + t);
-            if (id == "ruin_chest") Inventory.Add("seal_fragment", 1);
+            if (id == "ruin_chest" || id.EndsWith("_fragment")) Inventory.Add("seal_fragment", 1);
             if (id == "tower_chest") Inventory.Add("ancient_key", 1);
             PartyManager.Instance?.GrantXP(80 * (t + 1));
             CombatFX.Burst(transform.position + Vector3.up, new Color(1f, 0.85f, 0.45f), 1.5f, 40);

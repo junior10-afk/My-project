@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8537851288899352563
+--- !u!114 &-9168064091838304292
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: sound:burst
-  essential: 0
---- !u!114 &-7635259384482895880
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
+  DisplayName: "Face \xE0 face"
+  VirtualCamera:
+    exposedName: 92a4d52f1a6388d4f98d70f4d2987b9d
+    defaultValue: {fileID: 0}
+--- !u!114 &-9035802484997692282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
+  DisplayName: Le sol tremble
+  VirtualCamera:
+    exposedName: b66540ed7dbfb51408d38862fcc84a5b
+    defaultValue: {fileID: 0}
+--- !u!114 &-8888219811882010096
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,10 +56,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 3002963338907822722}
+    m_Asset: {fileID: -9035802484997692282}
     m_Duration: 4
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -7635259384482895880}
+    m_ParentTrack: {fileID: -8888219811882010096}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -107,10 +125,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 4
     m_ClipIn: 0
-    m_Asset: {fileID: -2464586481896890423}
+    m_Asset: {fileID: 3660024726332925572}
     m_Duration: 4.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -7635259384482895880}
+    m_ParentTrack: {fileID: -8888219811882010096}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -176,10 +194,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 8.5
     m_ClipIn: 0
-    m_Asset: {fileID: -7569878853756926918}
+    m_Asset: {fileID: -9168064091838304292}
     m_Duration: 3.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -7635259384482895880}
+    m_ParentTrack: {fileID: -8888219811882010096}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -245,7 +263,7 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   TrackPriority: 0
---- !u!114 &-7569878853756926918
+--- !u!114 &-6956316170760754835
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,14 +272,118 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: "Face \xE0 face"
-  VirtualCamera:
-    exposedName: 318b079efd61666498d2f9f0cb290164
-    defaultValue: {fileID: 0}
---- !u!114 &-7422714485889227889
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: burst:ArenaFX:Anemo
+  essential: 0
+--- !u!114 &-5380509090285277687
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: sound:burst
+  essential: 0
+--- !u!114 &-3485448616664474074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520b3db56792f7c45a1b3867aff83727, type: 3}
+  m_Name: Sous-titres
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleTrack
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 4.5
+    m_ClipIn: 0
+    m_Asset: {fileID: 1655413980701059634}
+    m_Duration: 3.5
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -3485448616664474074}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "INTRUS\u2026 NUL NE FOULERA\u2026 \u2026"
+  m_Markers:
+    m_Objects: []
+--- !u!114 &-2616824693190098194
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,7 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
   action: sound:slam
   essential: 0
---- !u!114 &-3303454866790509957
+--- !u!114 &-1456260070956167246
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,23 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
   action: "banner:Gardien Ancien \u2014 Sentinelle de la Tour"
   essential: 0
---- !u!114 &-2464586481896890423
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: "Le r\xE9veil"
-  VirtualCamera:
-    exposedName: 6bf4a261bd9224e499df349c8596c34b
-    defaultValue: {fileID: 0}
---- !u!114 &-1733873737316941648
+--- !u!114 &-1455445566912194693
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -317,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
   m_Name: CinematicActionClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: burst:ArenaFX:Anemo
+  action: sound:slam
   essential: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -333,17 +439,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.TimelineAsset
   m_Version: 0
   m_Tracks:
-  - {fileID: -7635259384482895880}
-  - {fileID: 8207045156139617865}
-  - {fileID: 866180375384495809}
-  - {fileID: 1853269022369359403}
+  - {fileID: -8888219811882010096}
+  - {fileID: -3485448616664474074}
+  - {fileID: 7295415364654836614}
+  - {fileID: 2557587405450643386}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 0}
---- !u!114 &866180375384495809
+--- !u!114 &1655413980701059634
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,21 +458,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94d8e71b175196c4e934873114e67a19, type: 3}
-  m_Name: Fondus
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeTrack
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips: []
-  m_Markers:
-    m_Objects: []
---- !u!114 &1853269022369359403
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: Gardien Ancien
+  text: "INTRUS\u2026 NUL NE FOULERA\u2026 LA TOUR\u2026"
+--- !u!114 &2557587405450643386
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -390,10 +487,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0.5
     m_ClipIn: 0
-    m_Asset: {fileID: -7422714485889227889}
+    m_Asset: {fileID: -1455445566912194693}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 1853269022369359403}
+    m_ParentTrack: {fileID: 2557587405450643386}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -459,10 +556,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 1.5
     m_ClipIn: 0
-    m_Asset: {fileID: 5630724064000211459}
+    m_Asset: {fileID: 4116917833066827587}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 1853269022369359403}
+    m_ParentTrack: {fileID: 2557587405450643386}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -528,10 +625,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 3
     m_ClipIn: 0
-    m_Asset: {fileID: 9053964830272844428}
+    m_Asset: {fileID: -2616824693190098194}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 1853269022369359403}
+    m_ParentTrack: {fileID: 2557587405450643386}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -597,10 +694,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 5
     m_ClipIn: 0
-    m_Asset: {fileID: -1733873737316941648}
+    m_Asset: {fileID: -6956316170760754835}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 1853269022369359403}
+    m_ParentTrack: {fileID: 2557587405450643386}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -666,10 +763,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 5
     m_ClipIn: 0
-    m_Asset: {fileID: -8537851288899352563}
+    m_Asset: {fileID: -5380509090285277687}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 1853269022369359403}
+    m_ParentTrack: {fileID: 2557587405450643386}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -735,10 +832,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 8.600000381469727
     m_ClipIn: 0
-    m_Asset: {fileID: -3303454866790509957}
+    m_Asset: {fileID: -1456260070956167246}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 1853269022369359403}
+    m_ParentTrack: {fileID: 2557587405450643386}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -803,7 +900,7 @@ MonoBehaviour:
     m_DisplayName: "banner:Gardien Ancien \u2014 Sentinelle de la Tour"
   m_Markers:
     m_Objects: []
---- !u!114 &3002963338907822722
+--- !u!114 &3660024726332925572
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -815,25 +912,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
   m_Name: CinemachineShot
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: Le sol tremble
+  DisplayName: "Le r\xE9veil"
   VirtualCamera:
-    exposedName: d5d3bf20e2a12014c9ae0a9c1229f7d9
+    exposedName: 491c10eafe9f2904ea8d0e264b022a8c
     defaultValue: {fileID: 0}
---- !u!114 &3890064813456251763
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: Gardien Ancien
-  text: "INTRUS\u2026 NUL NE FOULERA\u2026 LA TOUR\u2026"
---- !u!114 &5630724064000211459
+--- !u!114 &4116917833066827587
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -847,7 +930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
   action: burst:ArenaFX:Anemo
   essential: 0
---- !u!114 &8207045156139617865
+--- !u!114 &7295415364654836614
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -856,9 +939,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520b3db56792f7c45a1b3867aff83727, type: 3}
-  m_Name: Sous-titres
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleTrack
+  m_Script: {fileID: 11500000, guid: 94d8e71b175196c4e934873114e67a19, type: 3}
+  m_Name: Fondus
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeTrack
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
@@ -867,89 +950,6 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 4.5
-    m_ClipIn: 0
-    m_Asset: {fileID: 3890064813456251763}
-    m_Duration: 3.5
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 8207045156139617865}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: "INTRUS\u2026 NUL NE FOULERA\u2026 \u2026"
+  m_Clips: []
   m_Markers:
     m_Objects: []
---- !u!114 &9053964830272844428
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: sound:slam
-  essential: 0

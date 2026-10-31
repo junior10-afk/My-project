@@ -295,6 +295,17 @@ namespace LastWorld
                     var pv = PlayerController.Instance;
                     if (pv && pv.visual) pv.visual.gameObject.SetActive(arg != "hide");
                     break;
+                case "respawn": // "respawn:Mark" sets where the party wakes up after a defeat
+                    if (m && PartyManager.Instance) PartyManager.Instance.RespawnPoint = m.position + Vector3.up;
+                    break;
+                case "clearboss": // "clearboss:boss_kael" removes a defeated boss's body so an actor can take its place
+                    foreach (var corpse in FindObjectsByType<EnemyBase>().Where(e => e.killTag == arg).ToArray())
+                        Destroy(corpse.gameObject);
+                    break;
+                case "time": // "time:22.5" sets the hour of day
+                    var cycle = FindAnyObjectByType<DayNightCycle>();
+                    if (cycle && float.TryParse(arg, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var hour)) cycle.timeOfDay = hour;
+                    break;
                 case "sound":
                     AudioManager.Play(arg);
                     break;

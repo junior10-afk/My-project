@@ -31,6 +31,8 @@ namespace LastWorld
         public static List<DialogueLine> For(string npc)
         {
             var qm = QuestManager.Instance;
+            var attached = qm.StepLines(npc);
+            if (attached != null) return attached;
             switch (npc)
             {
                 case "elara":
@@ -82,7 +84,7 @@ namespace LastWorld
                         new(Elara, "Trois. Dispersés aux quatre coins d'Aerendal. Et quelque chose me dit qu'il les cherche, lui aussi."),
                         new(Elara, "Repose-toi cette nuit. Le chemin ne fait que commencer."),
                     };
-                    return new()
+                    return ChapterDialogue.Idle("elara") ?? new()
                     {
                         new(Elara, "Que le vent guide tes pas, Aelis."),
                         new(Elara, "Si tu trouves des Orbes des Vents, rapporte-les : l'Autel renforcera ton souffle."),
@@ -113,7 +115,7 @@ namespace LastWorld
                 case "torvan":
                     return new() { new(Torvan, "Hmpf. Trente ans que je garde ces ruines. Je peux bien t'accompagner un peu, jeune vent.") };
             }
-            return new() { new("???", "…") };
+            return ChapterDialogue.Idle(npc) ?? new() { new("???", "…") };
         }
 
         // ================================================================ Story scenes

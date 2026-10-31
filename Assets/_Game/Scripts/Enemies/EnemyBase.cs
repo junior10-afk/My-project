@@ -38,6 +38,10 @@ namespace LastWorld
         public Transform armL;
         public Transform armR;
         public Renderer glow;
+        [Tooltip("Humanoid duelists (Kael…): mocap states on Humanoid.controller replace the procedural body rig.")]
+        public Animator rig;
+        [Tooltip("Title card shown when the fight starts (bosses).")]
+        public string bossTitle;
 
         public Health Health { get; private set; }
         public bool ParryWindowOpen => state == State.Windup && heavy && stateTime > windup - 0.4f;
@@ -60,6 +64,7 @@ namespace LastWorld
         MaterialPropertyBlock mpb;
         Transform player;
         bool summoned;
+        bool announced;
 
         Canvas barCanvas;
         Text label;
@@ -122,7 +127,7 @@ namespace LastWorld
             if (state == State.Dead)
             {
                 // The boss collapses in place long enough for its death cinematic (CIN_04) to frame it.
-                if (killTag == "boss" && stateTime < BossCorpseTime) return;
+                if (IsBoss && stateTime < BossCorpseTime) return;
                 transform.position += Vector3.down * (dt * 0.6f);
                 if (body) body.localScale = Vector3.Lerp(body.localScale, Vector3.zero, dt * 2f);
                 return;
@@ -167,6 +172,11 @@ namespace LastWorld
                         state = State.Chase;
                         stateTime = 0f;
                         DamageNumbers.ShowText("!", transform.position + Health.barOffset + Vector3.up * 0.4f, new Color(1f, 0.85f, 0.3f), 40);
+                        if (IsBoss && !string.IsNullOrEmpty(bossTitle) && !announced)
+                        {
+                            announced = true;
+                            GameUI.Banner(bossTitle, Elements.Color(attackElement));
+                        }
                     }
                     break;
 
@@ -268,7 +278,7 @@ namespace LastWorld
         void SummonAdds()
         {
             summoned = true;
-            GameUI.Banner("Le Gardien appelle des renforts !", new Color(1f, 0.7f, 0.4f));
+            GameUI.Banner("Des renforts surgissent !", new Color(1f, 0.7f, 0.4f));
             var spawner = GetComponentInParent<EnemySpawner>();
             if (spawner) spawner.SpawnExtra(3);
         }
@@ -316,9 +326,26 @@ namespace LastWorld
             var t = Terrain.activeTerrain;
             if (!t) return;
             var p = transform.position;
-            float ground = t.SampleHeight(p) + t.transform.position.y;
+            float ground = GroundY(p, p.y);
             p.y = Mathf.Lerp(p.y, ground, 0.5f);
             transform.position = p;
+        }
+
+        /// <summary>Height of the floor under a point: the terrain, or a solid platform (Seal Tower…) just under <paramref name="hint"/>.</summary>
+        public static float GroundY(Vector3 p, float hint)
+        {
+            var t = Terrain.activeTerrain;
+            float terrainY = t ? t.SampleHeight(p) + t.transform.position.y : 0f;
+            if (hint <= terrainY + 1.5f) return terrainY;
+            var hits = Physics.RaycastAll(new Vector3(p.x, hint + 2.5f, p.z), Vector3.down, hint - terrainY + 4f, ~0, QueryTriggerInteraction.Ignore);
+            float best = terrainY;
+            foreach (var h in hits)
+            {
+                if (h.collider is TerrainCollider || h.normal.y < 0.5f) continue;
+                if (h.collider.GetComponentInParent<EnemyBase>() || h.collider.GetComponentInParent<PlayerController>()) continue;
+                if (h.point.y > best && h.point.y < hint + 2.6f) best = h.point.y;
+            }
+            return best;
         }
 
         void Animate(float dt, bool stunned)
@@ -332,11 +359,17 @@ namespace LastWorld
                 Color c = baseCol * (1.2f + windupK * 3f);
                 if (heavy && ParryWindowOpen) c = new Color(4f, 3.2f, 0.6f);
                 if (Health.Frozen) c = new Color(0.8f, 1.6f, 2f);
+                if (mpb == null)
+                {
+                    Debug.LogWarning($"[EnemyBase] {name}: property block missing (Awake ran: {Health != null}, state {state}, kind {kind}, tag {killTag})", this);
+                    mpb = new MaterialPropertyBlock();
+                }
                 glow.GetPropertyBlock(mpb);
                 mpb.SetColor("_EmissionColor", c);
                 glow.SetPropertyBlock(mpb);
             }
 
+            if (rig) { AnimateRig(dt, stunned); return; }
             if (!body) return;
             if (kind == EnemyKind.Slime)
             {
@@ -360,6 +393,22 @@ namespace LastWorld
                 }
                 if (head) head.localRotation = Quaternion.Euler(0f, Mathf.Sin(t * 0.7f) * 10f, 0f);
             }
+        }
+
+        Vector3 rigLast;
+        string rigState;
+        float rigSpeed;
+
+        void AnimateRig(float dt, bool stunned)
+        {
+            float v = dt > 0f ? (transform.position - rigLast).magnitude / dt : 0f;
+            rigLast = transform.position;
+            rigSpeed = Mathf.Lerp(rigSpeed, v, 1f - Mathf.Exp(-8f * dt));
+            rig.SetFloat("Speed", rigSpeed);
+            string want = stunned ? "Hurt" : state == State.Windup ? "Attack" + (bossPattern % 4) : "CombatLocomotion";
+            if (want == rigState) return;
+            rigState = want;
+            HumanoidAnim.Play(rig, want, want.StartsWith("Attack") ? Mathf.Max(0.5f, windup + 0.35f) : 0f, 0.1f);
         }
 
         void OnDamaged(DamageInfo info)
@@ -387,10 +436,12 @@ namespace LastWorld
             QuestManager.ReportKill(killTag);
             var spawner = GetComponentInParent<EnemySpawner>();
             if (spawner) spawner.OnEnemyDied(this);
-            Destroy(gameObject, killTag == "boss" ? BossCorpseTime + 3f : 3f);
+            if (rig) HumanoidAnim.Play(rig, "Death", 1.6f, 0.1f);
+            Destroy(gameObject, IsBoss ? BossCorpseTime + 3f : 3f);
         }
 
         const float BossCorpseTime = 9f;
+        public bool IsBoss => killTag != null && killTag.StartsWith("boss");
 
         // ---------------------------------------------------------------- World-space health bar
 

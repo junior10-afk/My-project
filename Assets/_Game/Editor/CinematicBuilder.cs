@@ -15,7 +15,7 @@ namespace LastWorld.EditorTools
     /// fully editable in the Timeline window afterwards (enable the CinemachineBrain on the main
     /// camera to preview). Run after Build Gameplay Content (it needs Elara and the boss arena).
     /// </summary>
-    public static class CinematicBuilder
+    public static partial class CinematicBuilder
     {
         const string Dir = "Assets/_Game/Cinematics";
         const string MatDir = "Assets/_Game/Materials/Cinematics";
@@ -141,9 +141,10 @@ namespace LastWorld.EditorTools
             Gardien(root.transform, arena);
             PremierVent(root.transform, arena);
             Epilogue(root.transform);
+            BuildChapters(root.transform, altarPos);
 
             AssetDatabase.SaveAssets();
-            Debug.Log("[CinematicBuilder] 6 cinematics built.");
+            Debug.Log("[CinematicBuilder] Cinematics built.");
             return true;
         }
 
@@ -596,7 +597,7 @@ namespace LastWorld.EditorTools
             return root;
         }
 
-        static Material KaelMaterial(Material src)
+        internal static Material KaelMaterial(Material src)
         {
             if (!src) return src;
             string n = src.name.ToLowerInvariant();
@@ -679,8 +680,9 @@ namespace LastWorld.EditorTools
         }
 
         /// <summary>Removes terrain trees (and, closer in, undergrowth) around a point.</summary>
-        static void ClearTrees(Vector3 center, float treeRadius, float floorRadius)
+        internal static void ClearTrees(Vector3 center, float treeRadius, float floorRadius)
         {
+            terrain ??= Object.FindAnyObjectByType<Terrain>();
             var data = terrain.terrainData;
             var size = data.size;
             var protos = data.treePrototypes;

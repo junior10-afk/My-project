@@ -1,4 +1,4 @@
-# Le Dernier Monde — Bible de l'histoire (v0.1)
+# Le Dernier Monde — Bible de l'histoire (v1.0)
 
 > Ton : épique et mélancolique. Un monde magnifique qui s'éteint doucement,
 > des personnages qui ont déjà perdu quelque chose, et un mystère sur le héros.
@@ -85,17 +85,20 @@ revenue… »* — premier indice sur l'identité du héros.
 
 ---
 
-## 3. Arc global (feuille de route)
+## 3. Arc global (feuille de route — réalisée jusqu'à la 1.0)
 
 | Version | Chapitre | Résumé |
 |---|---|---|
-| **0.1** | **Prologue + Ch. I — Les Vents Oubliés** | Réveil, premier fragment, premier vent libéré, apparition de Kael. |
-| 0.2 | Ch. II — Les Cendres de Cendrelune | Kaïra rentre chez elle ; Kael y cherche aussi le fragment. Première vraie confrontation. |
-| 0.3 | Ch. III — La Mémoire des Marées | Nerys déchiffre les archives : la vérité sur les âmes liées. Aelis retrouve ses souvenirs. |
-| 0.4 | Ch. IV — Le Serment d'Orage | Torvan et l'Ordre de la Veille. Le dernier fragment. |
-| 1.0 | Ch. V — Le Dernier Monde | Choix final : restaurer le Sceau (se sacrifier), laisser le monde mourir avec Kael, ou trouver une 3e voie (les quatre héros portent chacun un vent). |
-
----
+| 0.1 | Prologue + Ch. I — Les Vents Oubliés | Réveil, premier fragment, premier vent libéré, apparition de Kael. |
+| 0.2 | Ch. II — Les Cendres de Cendrelune | Kaïra rentre chez elle ; Kael y est déjà. Colosse de Braise. |
+| 0.3 | Ch. III — La Mémoire des Marées | Les Archives d'Ysmère : la vérité sur les âmes liées, Aelis redevient Aelith. |
+| 0.4 | Ch. IV — Le Serment d'Orage | Torvan, l'Ordre de la Veille et son secret ; dernier fragment. |
+| 0.5 | Ch. V — Les Terres Pâles | La Pâleur avance ; Ilio, le petit frère de Kaïra, est retrouvé ; le carnet de Kael. |
+| 0.6 | Ch. VI — La Mémoire d'Aelith | Les quatre fragments sur l'Autel : le Sanctuaire, les trois Gardiens, l'Ombre. |
+| 0.7 | Ch. VII — Les Quatre Veilles | Les trois compagnons éveillent le vent qu'ils portent. |
+| 0.8 | Ch. VIII — La Tour du Sceau | Montée de la Tour, duel contre Kael. La Pâleur franchit le dôme. |
+| 0.9 | Ch. IX — La Veille du Dernier Jour | Siège du camp, veillée, Kael rejoint le feu. |
+| **1.0** | **Ch. X — Le Dernier Monde** | L'Effacement, puis le choix : trois fins. **L'histoire s'arrête ici.** |
 
 ## 4. Version 0.1 — Prologue et Chapitre I en détail
 
@@ -156,3 +159,56 @@ Kael seul au bord du monde, face à la Pâleur.
 - Les tutoriels sont glissés dans les répliques d'Elara, jamais un écran de texte brut.
 - Le genre d'Aelis : masculin dans le texte actuel (le modèle est masculin). Kael l'appelle
   « petite sœur » uniquement en parlant de l'âme d'Aelith : c'est voulu, ça intrigue.
+
+
+---
+
+## 6. Chapitres II à X (v0.2 → v1.0)
+
+Les quatre Gardiens Premiers : **Aelith** (Anemo), **Cendrel** (Pyro), **Ysmé** (Hydro), **Valdrak** (Electro).
+Chaque chapitre commence par un briefing d'Elara au camp et se termine sur une cinématique ; les quêtes sont dans
+`ChapterQuests.cs`, le texte dans `ChapterDialogue.cs`, les lieux dans `ChapterBuilder*.cs`, les scènes dans `ChapterCinematics.cs`.
+
+### Ch. II — Les Cendres de Cendrelune (Pyro · Kaïra)
+Village brûlé, Maren (dernière habitante), Forge-Volcan (cratère sculpté). **CIN_06** : Kael, déjà là, réveille le Colosse
+et disparaît. Boss : *Colosse de Braise*. **CIN_07** : le Vent-de-Braise ; Kaïra entend la voix d'Ilio.
+
+### Ch. III — La Mémoire des Marées (Hydro · Nerys)
+Lagune d'Ysmère (baie sculptée, île des Archives, chaussée de dalles), Sael, trois Pierres de Mémoire (le Serment,
+Kael et Aelith, l'Adieu). **CIN_08** : le Livre des Marées — Aelith et Kael jeunes ; Aelis retrouve son nom.
+Boss : *Sentinelle du Bassin*. **CIN_09** : le Vent-des-Marées.
+
+### Ch. IV — Le Serment d'Orage (Electro · Torvan)
+Citadelle de l'Ordre de la Veille sur le plateau de Valdrak, Orrin, trois flambeaux. Torvan avoue qu'il savait que
+les Gardiens étaient prisonniers. **CIN_10** : Kael barre la porte, Torvan s'interpose. Boss : *Colosse d'Orage*.
+**CIN_11** : les quatre fragments s'unissent et désignent le centre de l'île.
+
+### Ch. V — Les Terres Pâles
+Rivage nord blanchi. Kaïra retrouve Ilio, gardien d'une lanterne laissée par « le monsieur triste » (Kael nourrit
+l'enfant). **CIN_12**. Le carnet de Kael (cinq siècles). Boss : *Écho d'un monde perdu*. Ilio rejoint le camp.
+
+### Ch. VI — La Mémoire d'Aelith
+Les fragments sur l'Autel (**CIN_13**) : le Sanctuaire des Quatre Vents, plateforme céleste. Cendrel, Ysmé et Valdrak
+parlent de la **Troisième Voie** (quatre vents, quatre cœurs vivants, pas de prison). Boss : *l'Ombre d'Aelith*
+(duelliste). **CIN_14** : retour à l'aube.
+
+### Ch. VII — Les Quatre Veilles
+Trois cercles de veille (braise, marée, orage) ; chaque compagnon affronte sa peur et éveille son vent
+(+20 % PV, +25 % ATK). Boss mineurs : les *Veilleurs*.
+
+### Ch. VIII — La Tour du Sceau
+Tour de 45 m au centre de l'île, rampe en spirale, sommet circulaire. **CIN_15** : Kael et Aelis s'expliquent.
+Boss : *Kael* (duelliste, mocap). **CIN_16** : il s'agenouille, refuse de les suivre « pas encore » et disparaît ;
+le mur blanc de la Pâleur franchit le dôme.
+
+### Ch. IX — La Veille du Dernier Jour
+Trois vagues contre le camp (zone « marée blanche »), quatre braseros (adieux de Kaïra, Nerys, Torvan, Elara),
+Bram offre sa lanterne, Ilio un caillou chanceux. **CIN_17** : veillée de nuit, Kael s'assoit au feu, l'aube se lève.
+
+### Ch. X — Le Dernier Monde
+Bénédiction d'Elara, sommet de la Tour. **CIN_18** : la Pâleur prend un visage. Boss : *L'Effacement*. Puis le Cœur du
+Sceau propose trois choix (dialogue à choix) :
+1. **Restaurer le Sceau** (CIN_19) — Aelis se sacrifie ; Aerendal survit, Kael n'oublie rien.
+2. **Laisser le monde s'éteindre** (CIN_20) — fin douce, ensemble.
+3. **La Troisième Voie** (CIN_21) — chacun porte un vent ; la Pâleur recule ; Aelith redevient Aelis, Kael vieillit enfin.
+Chaque fin se termine par un générique (sous-titres).

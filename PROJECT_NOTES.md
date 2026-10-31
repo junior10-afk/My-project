@@ -1,8 +1,20 @@
 # Le Dernier Monde — notes de reprise
 
 Jeu open world (inspiré de Genshin Impact / Wuthering Waves), Unity 6.6 (URP, nouvel Input System).
-**Version 0.1.1** (30/10/2026) : Prologue + Chapitre I jouables de bout en bout, testés en Play
+**Version 1.0.0** : l'histoire complète (Prologue + Chapitres I à X, trois fins) est jouable ; détail des versions plus bas.
+(v0.1.1 : Prologue + Chapitre I jouables de bout en bout, testés en Play
 (boucle de test automatisée avec captures, voir plus bas). Histoire : **`STORY.md`** (bible). Crédits : `CREDITS.md`.
+
+## v0.2 → v1.0 — Chapitres II à X (voir STORY.md §6)
+- **Données** : `Scripts/Quests/ChapterQuests.cs` (quêtes `main2…main10`, enchaînées par `Quest.requires`), `ChapterDialogue.cs` (tout le texte + dialogues d'attente `Idle`), `StoryEvents` (`Play`, `ChapterDone`, `Ending`).
+- **QuestManager** : nouveau `StepType.Reach` (distance à un repère), `QuestStep.lines` (dialogue attaché à une étape *Talk*), quêtes verrouillées tant que la précédente n'est pas finie, `ChaptersDone`, `CurrentChapter`, `DebugJump`.
+- **Monde** : `Editor/ChapterBuilder.cs` (+ `.Regions.cs`) — sculpte le terrain (volcan de la Forge, baie d'Ysmère, plateau de Valdrak, route en pente, Tour du Sceau de 45 m avec rampe en spirale), peint les couches, retire arbres et herbe, place PNJ (Maren, Sael, Orrin, Ilio), camps, boss, coffres, sentinelles, `RegionZone` (brouillard, lumière, météo) et le Sanctuaire céleste (plateforme à 700 m au sud de l'île). **Relançable** : les reliefs sont des valeurs absolues, pas des cumuls.
+- **Scripts de monde** : `RegionZone`, `StoryObject` (pierres de mémoire, flambeaux, journal, cœur du Sceau ; `gateQuest/gateStep`), `ChapterGate` (objets visibles selon l'avancée : Ilio au refuge puis au camp, marée blanche au Ch. IX).
+- **Ennemis** : `EnemyBase` — tags `boss*` génériques, `bossTitle`, `rig` (duelliste humanoïde en mocap : Kael, l'Ombre d'Aelith), sol des plateformes (`GroundY`). `EnemySpawner.spawnOnStart` (rencontres d'histoire qui n'apparaissent que sur ordre).
+- **Cinématiques** : `Editor/ChapterCinematics.cs` — CIN_06 à CIN_21 (acteurs `Actor()`, `Cam()`). Nouvelles actions : `time:HH`, `respawn:Repère`, `clearboss:tag`.
+- **Compagnons** : vents éveillés au Ch. VII (`PartyMember.Awakened`). Version du jeu : `PlayerSettings.bundleVersion = 1.0.0` (fixée par le builder).
+- **Tests** : `Scripts/Core/DevTools.cs` — `Jump(quête, étape)`, `Goto(repère)`, `AutoStep()` (joue l'étape courante : parle, va au lieu, vainc le camp ou le boss, touche l'objet, ouvre le coffre). Pendant un test, écouter `Application.logMessageReceived` plutôt que lire la console (les traces sont énormes).
+- ⚠ Attendre la fin de la compilation avant d'entrer en Play (sinon les champs non sérialisés, ex. `EnemyBase.mpb`, sont remis à nul) et ne pas appeler `Step()` juste après l'entrée en Play (« PlayerLoop appelé récursivement »).
 
 ## v0.1.2 — animations mocap (Quaternius UAL1/UAL2, CC0)
 - `Editor/AnimationSetup.cs` (appelé par Build Gameplay Content) : extrait les clips des FBX `Art/Animations/Quaternius`, génère `Animation/Humanoid.controller` (44 clips, un état par clip) et `Resources/HumanoidClips.asset` (durées).
@@ -51,6 +63,7 @@ Jeu open world (inspiré de Genshin Impact / Wuthering Waves), Unity 6.6 (URP, n
 | CIN_03_Gardien | approcher l'arène à < 35 m pendant l'étape 7 |
 | CIN_04_PremierVent | mort du Gardien Ancien |
 | CIN_05_IlTeRessemblait | fin du Chapitre I (après le dernier dialogue d'Elara) |
+CIN_06 à CIN_21 (chapitres II à X et les trois fins) : déclencheurs et contenu dans STORY.md §6, construction dans `Editor/ChapterCinematics.cs`.
 Kael (antagoniste) = modèle du héros, tenue sombre, cheveux argentés (matériaux `Materials/Cinematics/Kael_*`).
 
 ## Personnages (Blender)
@@ -68,10 +81,8 @@ Kael (antagoniste) = modèle du héros, tenue sombre, cheveux argentés (matéri
 - Via MCP : Unity se déconnecte pendant les recompilations (attendre puis réessayer) ; en Play, l'éditeur sans focus n'avance pas → tester avec `EditorApplication.isPaused = true` + `EditorApplication.Step()`. Les évènements Input System simulés n'arrivent pas au jeu.
 - Blender se pilote en ligne de commande (`blender.exe -b`) ; MPFB : `bl_ext.user_default.mpfb`, données dans `extensions/.user/user_default/mpfb/data`.
 
-## Non testé / à faire ensuite
-- Tout le Chapitre I a été joué en test automatisé (v0.1.1) ; reste à valider au vrai clavier/souris (saut des cinématiques en maintenant Échap, ressenti du combat).
-- Kaïra/Nerys/Torvan parlent lors de leur recrutement sans apparaître physiquement ; si un compagnon est actif, c'est lui qui apparaît dans les cinématiques à la place d'Aelis.
-- Animations mocap en place (v0.1.2) sur CIN_01, 02, 04, 05. Pas de lip-sync.
-- Pas de voix (sous-titres seulement), pas de musique dédiée aux cinématiques.
-- Défauts connus : orientation de l'épée ; boss probablement trop facile ; l'heure du jour n'est pas forcée dans les cinématiques (CIN_05 devrait être de nuit).
-- Feuille de route : v0.2 = Chapitre II « Les Cendres de Cendrelune » (voir STORY.md §3).
+## Tests réalisés (v1.0) et reste à valider
+- **Automatisé, vert** : parcours complet Chapitre I → X par `DevTools.AutoStep` (étapes, enchaînements, cinématiques, dialogues attachés, apparition des camps et boss, quête finale) et choix final → fin 1 (la fin 3 a aussi été lancée) sans aucune erreur ; les 22 cinématiques jouées avec captures ; dialogues des PNJ de chaque chapitre vérifiés aux bonnes étapes.
+- **À valider à la main (clavier/souris)** : ressenti des combats de boss (PV de niveau pris dans `CampLevel`, boss du Ch. X ≈ 2,4 × les PV de base), marche/saut/planeur/escalade dans les nouveaux reliefs, saut des cinématiques (Échap maintenu), lisibilité des plans de caméra en vrai temps réel.
+- **Limites connues** : pas de voix ni de musique dédiée ; les compagnons ne sont visibles que dans les cinématiques (le joueur incarne le personnage actif) ; Kael et l'Ombre d'Aelith partagent le modèle du héros (teintes différentes) ; la pierre des nouveaux sites est une version désaturée de `medieval_blocks_02` ; la météo des régions (`RegionZone`) est un système de particules simple suivant la caméra.
+- **Pistes** : musique par région, voix, variantes de boss moins « golem », quêtes secondaires par région (Orbes et Chasseur existent déjà), nouvelle partie + (garder l'équipe).

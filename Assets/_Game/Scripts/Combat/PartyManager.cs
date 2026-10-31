@@ -33,8 +33,10 @@ namespace LastWorld
         [NonSerialized] public float energy;
         [NonSerialized] public float skillReadyTime;
 
-        public float MaxHP => baseHP * (1f + (level - 1) * 0.12f);
-        public float ATK => baseATK * (1f + (level - 1) * 0.1f);
+        /// <summary>Chapter VII: the companion's wind is awakened (+20 % HP, +25 % ATK).</summary>
+        public bool Awakened => ChapterQuests.IsAwakened(name);
+        public float MaxHP => baseHP * (1f + (level - 1) * 0.12f) * (Awakened ? 1.2f : 1f);
+        public float ATK => baseATK * (1f + (level - 1) * 0.1f) * (Awakened ? 1.25f : 1f);
         public int XPToNext => 400 + level * 250;
         public bool Down => hp <= 0f;
         public float SkillCooldownLeft => Mathf.Max(0f, skillReadyTime - Time.time);

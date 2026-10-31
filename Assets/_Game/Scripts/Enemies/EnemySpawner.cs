@@ -12,6 +12,8 @@ namespace LastWorld
         public int count = 3;
         public float radius = 6f;
         public bool respawn = true;
+        [Tooltip("Off for story encounters: they only appear when a quest calls EnsureSpawned().")]
+        public bool spawnOnStart = true;
         public float respawnDelay = 180f;
 
         readonly List<EnemyBase> alive = new();
@@ -19,7 +21,10 @@ namespace LastWorld
 
         public bool Cleared => alive.Count == 0;
 
-        void Start() => SpawnAll();
+        void Start()
+        {
+            if (spawnOnStart) SpawnAll();
+        }
 
         void SpawnAll()
         {
@@ -41,7 +46,7 @@ namespace LastWorld
         {
             Vector2 c = Random.insideUnitCircle * radius;
             var pos = transform.position + new Vector3(c.x, 0f, c.y);
-            if (Terrain.activeTerrain) pos.y = Terrain.activeTerrain.SampleHeight(pos) + Terrain.activeTerrain.transform.position.y;
+            if (Terrain.activeTerrain) pos.y = EnemyBase.GroundY(pos, transform.position.y);
             var go = Instantiate(prefab, pos, Quaternion.Euler(0f, Random.Range(0f, 360f), 0f), transform);
             go.SetActive(true);
             var e = go.GetComponent<EnemyBase>();

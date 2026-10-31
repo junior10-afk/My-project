@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LastWorld
 {
-    public enum StepType { Talk, Interact, Kill, Camp, Waypoints, OpenChest, Item, Boss }
+    public enum StepType { Talk, Interact, Kill, Camp, Waypoints, OpenChest, Item, Boss, Reach }
 
     public class QuestStep
     {
@@ -14,12 +14,18 @@ namespace LastWorld
         public int required = 1;
         public string markerId;
         public Action onComplete;
+        /// <summary>Talk steps: the dialogue played when speaking to <see cref="target"/> at this step.</summary>
+        public Func<List<DialogueLine>> lines;
+        /// <summary>Reach steps: distance (m) to the marker that completes the step.</summary>
+        public float radius = 30f;
     }
 
     public class Quest
     {
         public string id, title, summary;
         public bool main;
+        /// <summary>Id of the quest that must be finished first (chapters chain one after the other).</summary>
+        public string requires;
         public List<QuestStep> steps = new();
         public int current;
         public int progress;
@@ -59,7 +65,50 @@ namespace LastWorld
         {
             Instance = this;
             BuildQuests();
+            ChapterQuests.Add(this);
             Tracked = quests[0];
+        }
+
+        public bool IsAvailable(Quest q) => q != null && (string.IsNullOrEmpty(q.requires) || quests.Find(x => x.id == q.requires) is { done: true });
+
+        /// <summary>The quest the HUD should follow: the current chapter first, then side quests.</summary>
+        Quest NextTracked() => quests.Find(x => x.main && !x.done && IsAvailable(x)) ?? quests.Find(x => !x.done && IsAvailable(x)) ?? quests[0];
+
+        public Quest CurrentChapter => quests.Find(x => x.main && !x.done && IsAvailable(x));
+
+        /// <summary>Number of finished main chapters (0 = still in Chapter I).</summary>
+        public int ChaptersDone => quests.FindAll(x => x.main && x.done).Count;
+
+        float reachTimer;
+
+        void Update()
+        {
+            reachTimer -= Time.deltaTime;
+            if (reachTimer > 0f) return;
+            reachTimer = 0.25f;
+            var p = PlayerController.Instance;
+            if (!p || CinematicDirector.Playing) return;
+            foreach (var q in quests.ToArray())
+            {
+                var s = q.Step;
+                if (s == null || s.type != StepType.Reach || !IsAvailable(q)) continue;
+                if (WorldMarkers.TryGet(s.markerId, out var pos) && Vector2.Distance(new Vector2(pos.x, pos.z), new Vector2(p.transform.position.x, p.transform.position.z)) < s.radius)
+                {
+                    Report(StepType.Reach, s.target);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>Dialogue attached to the current Talk step of an available quest that targets this NPC.</summary>
+        public List<DialogueLine> StepLines(string npc)
+        {
+            foreach (var q in quests)
+            {
+                var s = q.Step;
+                if (s != null && s.type == StepType.Talk && s.target == npc && s.lines != null && IsAvailable(q)) return s.lines();
+            }
+            return null;
         }
 
         void BuildQuests()
@@ -162,7 +211,9 @@ namespace LastWorld
 
         void Report(StepType type, string target, int amount = 1)
         {
-            foreach (var q in quests)
+            // Freeze who is eligible first: finishing a chapter unlocks the next one, which must not eat the same event.
+            var eligible = quests.FindAll(IsAvailable);
+            foreach (var q in eligible)
             {
                 var s = q.Step;
                 if (s == null || s.type != type) continue;
@@ -187,7 +238,7 @@ namespace LastWorld
                 q.done = true;
                 q.onFinish?.Invoke();
                 GameUI.Toast($"Quête terminée : {q.title}");
-                if (Tracked == q) Tracked = quests.Find(x => !x.done);
+                if (Tracked == q || Tracked == null || Tracked.done) Tracked = NextTracked();
             }
             else
             {
@@ -200,15 +251,39 @@ namespace LastWorld
             Changed?.Invoke();
         }
 
-        public bool IsAtStep(string questId, int step) => quests.Find(x => x.id == questId) is { } q && !q.done && q.current == step;
+        public bool IsAtStep(string questId, int step) => quests.Find(x => x.id == questId) is { } q && !q.done && q.current == step && IsAvailable(q);
+
+        /// <summary>Test helper: marks every main quest before <paramref name="questId"/> as done and puts it at <paramref name="step"/>, without side effects.</summary>
+        public void DebugJump(string questId, int step)
+        {
+            bool before = true;
+            foreach (var q in quests)
+            {
+                if (!q.main) continue;
+                if (q.id == questId)
+                {
+                    q.done = false;
+                    q.current = step;
+                    q.progress = 0;
+                    before = false;
+                }
+                else if (before) { q.done = true; q.current = q.steps.Count; }
+                else { q.done = false; q.current = 0; q.progress = 0; }
+            }
+            if (questId != "main1")
+                foreach (var m in new[] { "Kaïra", "Nerys", "Torvan" }) PartyManager.Instance?.Unlock(m);
+            Tracked = NextTracked();
+            Changed?.Invoke();
+        }
 
         public static void ReportTalk(string npc) => Instance?.Report(StepType.Talk, npc);
         public static void ReportInteract(string id) => Instance?.Report(StepType.Interact, id);
         public static void ReportKill(string tag)
         {
             Instance?.Report(StepType.Kill, tag);
-            if (tag == "boss") Instance?.Report(StepType.Boss, "boss");
+            if (tag.StartsWith("boss")) Instance?.Report(StepType.Boss, tag);
         }
+        public static void ReportReach(string id) => Instance?.Report(StepType.Reach, id);
         public static void ReportCampCleared(string camp) => Instance?.Report(StepType.Camp, camp);
         public static void ReportChest(string chest) => Instance?.Report(StepType.OpenChest, chest);
         public static void ReportItem(string item) => Instance?.Report(StepType.Item, item, 0);
@@ -247,8 +322,15 @@ namespace LastWorld
                 q.progress = st.progress;
                 q.done = st.done;
             }
-            Tracked = quests.Find(x => !x.done) ?? quests[0];
+            Tracked = NextTracked();
             Changed?.Invoke();
+            // Story encounters only appear on demand: after loading in the middle of one, bring it back
+            foreach (var q in quests)
+            {
+                var step = q.Step;
+                if (step != null && IsAvailable(q) && (step.type == StepType.Boss || step.type == StepType.Camp))
+                    EnemySpawner.Find(step.target)?.EnsureSpawned();
+            }
         }
     }
 }
