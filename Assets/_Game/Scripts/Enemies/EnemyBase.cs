@@ -66,6 +66,8 @@ namespace LastWorld
         bool summoned;
         bool announced;
         float farAccum;
+        Collider bodyCollider;
+        readonly RaycastHit[] movementHits = new RaycastHit[16];
 
         Canvas barCanvas;
         Text label;
@@ -86,6 +88,7 @@ namespace LastWorld
             home = transform.position;
             wanderTarget = home;
             mpb = new MaterialPropertyBlock();
+            bodyCollider = GetComponent<Collider>();
             if (body)
             {
                 bodyBase = body.localPosition;
@@ -121,6 +124,7 @@ namespace LastWorld
 
         void Update()
         {
+            if (GameState.InputBlocked) { UpdateBar(); return; }
             float dt = Time.deltaTime;
             if (!player && PlayerController.Instance) player = PlayerController.Instance.transform;
             // Idle enemies far from the hero are only updated a few times per second (the island holds ~70 of them)
@@ -144,7 +148,7 @@ namespace LastWorld
 
             if (external.sqrMagnitude > 0.01f)
             {
-                transform.position += external * dt;
+                MoveWithCollision(external * dt);
                 external = Vector3.Lerp(external, Vector3.zero, 1f - Mathf.Exp(-6f * dt));
             }
 
@@ -318,8 +322,56 @@ namespace LastWorld
             d.y = 0f;
             if (d.magnitude < 0.05f) return;
             Face(target, dt);
-            transform.position += d.normalized * (speed * dt);
-            animPhase += dt * speed * 2.2f;
+            float moved = MoveWithCollision(d.normalized * Mathf.Min(d.magnitude, speed * dt));
+            animPhase += moved * 2.2f;
+        }
+
+        float MoveWithCollision(Vector3 displacement)
+        {
+            var vertical = Vector3.up * displacement.y;
+            displacement.y = 0f;
+            float distance = displacement.magnitude;
+            if (distance < 0.001f) { transform.position += vertical; return 0f; }
+            Vector3 direction = displacement / distance;
+            float moved = distance;
+            if (Sweep(direction, distance + 0.06f, out var wall))
+            {
+                moved = Mathf.Min(distance, Mathf.Max(0f, wall.distance - 0.06f));
+                transform.position += direction * moved;
+                Vector3 slide = Vector3.ProjectOnPlane(direction, wall.normal);
+                slide.y = 0f;
+                float remaining = distance - moved;
+                if (remaining > 0.01f && slide.sqrMagnitude > 0.04f)
+                {
+                    slide.Normalize();
+                    if (Sweep(slide, remaining + 0.06f, out var other))
+                        remaining = Mathf.Min(remaining, Mathf.Max(0f, other.distance - 0.06f));
+                    transform.position += slide * remaining;
+                    moved += remaining;
+                }
+            }
+            else transform.position += displacement;
+            transform.position += vertical;
+            return moved;
+        }
+
+        bool Sweep(Vector3 direction, float distance, out RaycastHit obstacle)
+        {
+            obstacle = default;
+            float radius = bodyCollider ? Mathf.Clamp(Mathf.Min(bodyCollider.bounds.extents.x, bodyCollider.bounds.extents.z) * 0.85f, 0.35f, 1.6f) : 0.4f;
+            float centerY = bodyCollider ? Mathf.Max(0.85f, bodyCollider.bounds.center.y - transform.position.y) : 0.85f;
+            var origin = transform.position + Vector3.up * centerY;
+            int count = Physics.SphereCastNonAlloc(origin, radius, direction, movementHits, distance, ~0, QueryTriggerInteraction.Ignore);
+            float nearest = float.MaxValue;
+            for (int i = 0; i < count; i++)
+            {
+                var hit = movementHits[i];
+                if (!hit.collider || hit.collider is TerrainCollider || hit.collider.GetComponentInParent<EnemyBase>() ||
+                    hit.collider.GetComponentInParent<PlayerController>() || hit.normal.y > 0.55f || hit.distance >= nearest) continue;
+                nearest = hit.distance;
+                obstacle = hit;
+            }
+            return nearest < float.MaxValue;
         }
 
         void Face(Vector3 target, float dt)

@@ -25,6 +25,7 @@ namespace LastWorld.EditorTools
 
         static Terrain terrain;
         static NoiseSettings handheld;
+        static string buildDir = Dir;
 
         [MenuItem("Last World/Build Cinematics")]
         public static void BuildMenu()
@@ -113,14 +114,20 @@ namespace LastWorld.EditorTools
                 return false;
             }
 
+            if (!ChapterBuilder.RestoreSites(terrain))
+            {
+                Debug.LogError("[CinematicBuilder] Chapter sites are missing: existing cinematics were kept. Build Gameplay Content to restore them.");
+                return false;
+            }
             ArtLibrary.EnsureFolder(Dir);
             ArtLibrary.EnsureFolder(MatDir);
             handheld = AssetDatabase.LoadAssetAtPath<NoiseSettings>("Packages/com.unity.cinemachine/Presets/Noise/Handheld_normal_mild.asset");
 
             var old = GameObject.Find(RootName);
-            if (old) Object.DestroyImmediate(old);
-            var root = new GameObject(RootName);
+            var root = new GameObject("Cinématiques (préparation)");
             root.AddComponent<CinematicDirector>();
+            buildDir = Dir + "/Staging_" + GUID.Generate().ToString();
+            AssetDatabase.CreateFolder(Dir, buildDir.Substring(Dir.Length + 1));
 
             var cam = Camera.main;
             if (cam && !cam.GetComponent<CinemachineBrain>())
@@ -143,8 +150,56 @@ namespace LastWorld.EditorTools
             Epilogue(root.transform);
             BuildChapters(root.transform, altarPos);
 
+            var directors = root.GetComponentsInChildren<PlayableDirector>(true);
+            if (directors.Length != 22 || Enumerable.Range(0, 22).Any(i => !directors.Any(d => d.name.StartsWith($"CIN_{i:00}_"))))
+            {
+                Debug.LogError($"[CinematicBuilder] Expected 22 cinematics, got {directors.Length}; existing scene kept.");
+                Object.DestroyImmediate(root);
+                AssetDatabase.DeleteAsset(buildDir);
+                buildDir = Dir;
+                return false;
+            }
             AssetDatabase.SaveAssets();
-            Debug.Log("[CinematicBuilder] Cinematics built.");
+            string backupDir = Dir + "/Backup_" + GUID.Generate().ToString();
+            AssetDatabase.CreateFolder(Dir, backupDir.Substring(Dir.Length + 1));
+            var archived = new System.Collections.Generic.List<(string backup, string original)>();
+            var published = new System.Collections.Generic.List<(string target, string staged)>();
+            string publishError = null;
+            foreach (var director in directors)
+            {
+                string source = AssetDatabase.GetAssetPath(director.playableAsset);
+                string target = $"{Dir}/{director.name}.playable";
+                if (AssetDatabase.LoadAssetAtPath<TimelineAsset>(target))
+                {
+                    string backup = $"{backupDir}/{director.name}.playable";
+                    publishError = AssetDatabase.MoveAsset(target, backup);
+                    if (!string.IsNullOrEmpty(publishError)) break;
+                    archived.Add((backup, target));
+                }
+                publishError = AssetDatabase.MoveAsset(source, target);
+                if (!string.IsNullOrEmpty(publishError)) break;
+                published.Add((target, source));
+            }
+            if (!string.IsNullOrEmpty(publishError))
+            {
+                for (int i = published.Count - 1; i >= 0; i--)
+                    AssetDatabase.MoveAsset(published[i].target, published[i].staged);
+                for (int i = archived.Count - 1; i >= 0; i--)
+                    AssetDatabase.MoveAsset(archived[i].backup, archived[i].original);
+                Object.DestroyImmediate(root);
+                AssetDatabase.DeleteAsset(buildDir);
+                AssetDatabase.DeleteAsset(backupDir);
+                buildDir = Dir;
+                Debug.LogError($"[CinematicBuilder] Publish failed, existing cinematics restored: {publishError}");
+                return false;
+            }
+            if (old) Object.DestroyImmediate(old);
+            root.name = RootName;
+            AssetDatabase.DeleteAsset(buildDir);
+            AssetDatabase.DeleteAsset(backupDir);
+            buildDir = Dir;
+            AssetDatabase.SaveAssets();
+            Debug.Log("[CinematicBuilder] All 22 cinematics built.");
             return true;
         }
 
@@ -375,8 +430,7 @@ namespace LastWorld.EditorTools
 
         static Cine Begin(Transform parent, string id)
         {
-            string path = $"{Dir}/{id}.playable";
-            AssetDatabase.DeleteAsset(path);
+            string path = $"{buildDir}/{id}.playable";
             var tl = ScriptableObject.CreateInstance<TimelineAsset>();
             AssetDatabase.CreateAsset(tl, path);
 

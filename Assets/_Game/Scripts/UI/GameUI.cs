@@ -44,10 +44,13 @@ namespace LastWorld
         Camera cam;
 
         // HUD
-        RectTransform hud;
+        RectTransform hud, bossBar;
+        Text bossName;
+        Image bossFill;
         RawImage minimap;
         RectTransform miniPlayer, miniQuest;
         Text questTitle, questStep, clockText, stateText, promptText, helpText, bannerText, nameText;
+        RectTransform helpPanel;
         Image hpFill, shieldFill, skillFill, burstFill, staminaFill;
         Text skillText, burstText;
         Image skillRing, burstRing;
@@ -151,7 +154,7 @@ namespace LastWorld
             if (kb.bKey.wasPressedThisFrame) Toggle(inventoryPanel, RefreshInventory);
             if (kb.cKey.wasPressedThisFrame) Toggle(charactersPanel, RefreshCharacters);
             if (kb.jKey.wasPressedThisFrame) Toggle(questsPanel, RefreshQuests);
-            if (kb.hKey.wasPressedThisFrame) helpText.enabled = !helpText.enabled;
+            if (kb.hKey.wasPressedThisFrame) helpPanel.gameObject.SetActive(!helpPanel.gameObject.activeSelf);
         }
 
         bool AnyMenuOpen() => pausePanel.activeSelf || mapPanel.activeSelf || inventoryPanel.activeSelf || charactersPanel.activeSelf || questsPanel.activeSelf;
@@ -236,6 +239,26 @@ namespace LastWorld
                 row.root.anchoredPosition = new Vector2(active ? -40f : -24f, row.root.anchoredPosition.y);
                 row.label.color = active ? Accent : Color.white;
                 row.label.text = $"{i + 1}  {mem.name}" + (mem.BurstReady ? "  ✦" : "");
+            }
+
+            // The nearest living boss owns the shared encounter bar.
+            EnemyBase nearbyBoss = null;
+            float bossDistance = 45f * 45f;
+            foreach (var enemy in EnemyBase.All)
+            {
+                if (!enemy || !enemy.IsBoss || !enemy.Health || enemy.Health.Dead) continue;
+                float distance = (enemy.transform.position - player.transform.position).sqrMagnitude;
+                if (distance >= bossDistance) continue;
+                nearbyBoss = enemy;
+                bossDistance = distance;
+            }
+            bossBar.gameObject.SetActive(nearbyBoss && !GameState.UIOpen);
+            if (nearbyBoss)
+            {
+                string title = string.IsNullOrEmpty(nearbyBoss.bossTitle) ? nearbyBoss.Health.displayName : nearbyBoss.bossTitle;
+                bossName.text = $"{title}   ·   Niv. {nearbyBoss.Health.level}";
+                bossFill.rectTransform.localScale = new Vector3(Mathf.Clamp01(nearbyBoss.Health.Normalized), 1f, 1f);
+                bossFill.color = Elements.Color(nearbyBoss.attackElement);
             }
 
             // Interaction prompt
@@ -565,11 +588,13 @@ namespace LastWorld
             miniPlayer = Box(minimap.rectTransform, "Player", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(12f, 18f), Color.white);
             MakeText(miniFrame, "N", 18, TextAnchor.UpperCenter, Accent).rectTransform.anchoredPosition = new Vector2(0f, -2f);
 
-            // Quest tracker
-            questTitle = MakeText(hud, "", 22, TextAnchor.UpperLeft, Accent);
-            Place(questTitle.rectTransform, new Vector2(0f, 1f), new Vector2(30f, -275f), new Vector2(520f, 30f));
-            questStep = MakeText(hud, "", 20, TextAnchor.UpperLeft, Color.white);
-            Place(questStep.rectTransform, new Vector2(0f, 1f), new Vector2(30f, -305f), new Vector2(560f, 60f));
+            // Quest tracker sits on a readable card, clear of the minimap.
+            var questCard = Box(hud, "Objectif", new Vector2(0f, 1f), new Vector2(30f, -265f), new Vector2(570f, 115f), new Color(0.025f, 0.055f, 0.08f, 0.8f));
+            Box(questCard, "Accent", new Vector2(0f, 1f), Vector2.zero, new Vector2(4f, 115f), Accent);
+            questTitle = MakeText(questCard, "", 22, TextAnchor.UpperLeft, Accent);
+            Place(questTitle.rectTransform, new Vector2(0f, 1f), new Vector2(20f, -13f), new Vector2(530f, 30f));
+            questStep = MakeText(questCard, "", 20, TextAnchor.UpperLeft, Color.white);
+            Place(questStep.rectTransform, new Vector2(0f, 1f), new Vector2(20f, -49f), new Vector2(530f, 58f));
             questStep.horizontalOverflow = HorizontalWrapMode.Wrap;
 
             // Clock / state
@@ -577,6 +602,17 @@ namespace LastWorld
             Place(clockText.rectTransform, new Vector2(1f, 1f), new Vector2(-30f, -24f), new Vector2(300f, 36f));
             stateText = MakeText(hud, "", 20, TextAnchor.UpperRight, new Color(0.85f, 0.95f, 1f));
             Place(stateText.rectTransform, new Vector2(1f, 1f), new Vector2(-30f, -60f), new Vector2(300f, 28f));
+
+            // Encounter bar: visible only while a living boss is nearby.
+            bossBar = Box(hud, "Gardien", new Vector2(0.5f, 1f), new Vector2(0f, -26f), new Vector2(900f, 92f), new Color(0.025f, 0.055f, 0.08f, 0.86f));
+            bossName = MakeText(bossBar, "", 26, TextAnchor.MiddleCenter, Color.white);
+            Place(bossName.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -11f), new Vector2(850f, 44f));
+            var bossBack = Box(bossBar, "PV", new Vector2(0.5f, 0f), new Vector2(0f, 18f), new Vector2(830f, 15f), new Color(0f, 0f, 0f, 0.65f));
+            bossFill = new GameObject("Progression", typeof(RectTransform), typeof(Image)).GetComponent<Image>();
+            bossFill.transform.SetParent(bossBack, false);
+            Stretch(bossFill.rectTransform, 2f);
+            bossFill.rectTransform.pivot = new Vector2(0f, 0.5f);
+            bossBar.gameObject.SetActive(false);
 
             // Party list
             for (int i = 0; i < 4; i++)
@@ -661,11 +697,15 @@ namespace LastWorld
             Stretch(bannerText.rectTransform, 0f);
             bannerText.fontStyle = FontStyle.Bold;
 
-            helpText = MakeText(hud,
+            helpPanel = Box(hud, "Commandes", new Vector2(0f, 0f), new Vector2(30f, 100f), new Vector2(1240f, 100f), new Color(0.025f, 0.055f, 0.08f, 0.9f));
+            helpText = MakeText(helpPanel,
                 "ZQSD déplacer · Espace sauter/planer · Shift/Clic droit esquiver (maintenir = sprint) · Clic gauche attaquer (maintenir = charge)\n" +
                 "E compétence · Q déchaînement · 1-4 changer de perso · F interagir · M carte · B sac · C équipe · J quêtes · Échap menu · H aide",
-                16, TextAnchor.LowerLeft, new Color(1f, 1f, 1f, 0.75f));
-            Place(helpText.rectTransform, new Vector2(0f, 0f), new Vector2(30f, 14f), new Vector2(1200f, 50f));
+                18, TextAnchor.MiddleLeft, Color.white);
+            Stretch(helpText.rectTransform, 20f);
+            helpPanel.gameObject.SetActive(false);
+            var helpHint = MakeText(hud, "[H]  Commandes", 18, TextAnchor.LowerLeft, new Color(0.9f, 0.93f, 0.9f, 0.8f));
+            Place(helpHint.rectTransform, new Vector2(0f, 0f), new Vector2(30f, 18f), new Vector2(280f, 30f));
         }
 
         (Image fill, Text label, Image ring) AbilityIcon(Vector2 offsetFromBottomRight, float size, Sprite disc, Sprite ringSprite)
@@ -705,25 +745,31 @@ namespace LastWorld
 
         void BuildMenus()
         {
-            // Title screen
-            var title = FullPanel("Titre", new Color(0.02f, 0.03f, 0.05f, 0.55f));
+            // Title screen: keep the world visible, but give the story and actions their own space.
+            var title = FullPanel("Titre", new Color(0.025f, 0.045f, 0.065f, 0.78f));
             titlePanel = title.gameObject;
-            var t1 = MakeText(title, "LE DERNIER MONDE", 92, TextAnchor.MiddleCenter, Accent);
-            Place(t1.rectTransform, new Vector2(0.5f, 0.68f), Vector2.zero, new Vector2(1400f, 120f));
+            Box(title, "Filet", new Vector2(0.035f, 0.76f), new Vector2(0f, 0f), new Vector2(5f, 340f), Accent);
+            var eyebrow = MakeText(title, "AERENDAL  /  LE DERNIER RAMEAU", 24, TextAnchor.MiddleLeft, new Color(0.62f, 0.88f, 0.84f));
+            Place(eyebrow.rectTransform, new Vector2(0.1f, 0.81f), Vector2.zero, new Vector2(840f, 42f));
+            var t1 = MakeText(title, "LE DERNIER\nMONDE", 108, TextAnchor.MiddleLeft, Accent);
+            Place(t1.rectTransform, new Vector2(0.1f, 0.58f), Vector2.zero, new Vector2(1040f, 250f));
             t1.fontStyle = FontStyle.Bold;
-            var t2 = MakeText(title, "Prologue & Chapitre I — Les Vents Oubliés", 32, TextAnchor.MiddleCenter, Color.white);
-            var ver = MakeText(title, $"v{Application.version}", 18, TextAnchor.LowerRight, new Color(1f, 1f, 1f, 0.5f));
-            Place(ver.rectTransform, new Vector2(1f, 0f), new Vector2(-20f, 14f), new Vector2(200f, 26f));
-            Place(t2.rectTransform, new Vector2(0.5f, 0.6f), Vector2.zero, new Vector2(1000f, 50f));
-            float by = -40f;
+            var t2 = MakeText(title, "Les vents se sont tus. La Pâleur avance.\nIl reste un monde à sauver — ou à libérer.", 32, TextAnchor.MiddleLeft, Color.white);
+            Place(t2.rectTransform, new Vector2(0.1f, 0.39f), Vector2.zero, new Vector2(1020f, 110f));
+            var scope = MakeText(title, "UNE HISTOIRE EN DIX CHAPITRES     ·     TROIS DESTINS", 21, TextAnchor.MiddleLeft, new Color(0.67f, 0.78f, 0.79f));
+            Place(scope.rectTransform, new Vector2(0.1f, 0.22f), Vector2.zero, new Vector2(950f, 44f));
+
+            var menu = Box(title, "Choisir", new Vector2(0.72f, 0.5f), Vector2.zero, new Vector2(520f, 380f), new Color(0.025f, 0.055f, 0.08f, 0.94f));
+            var menuHeading = MakeText(menu, "COMMENCER L'AVENTURE", 23, TextAnchor.MiddleCenter, Accent);
+            Place(menuHeading.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -30f), new Vector2(470f, 42f));
+            float by = -92f;
             void TitleButton(string label, Action a)
             {
-                var b = MakeButton(title, label, a, 380f, 56f);
-                var rt = (RectTransform)b.transform;
-                rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.45f);
-                rt.anchoredPosition = new Vector2(0f, by);
-                by -= 70f;
+                var b = MakeButton(menu, label, a, 430f, 64f);
+                Place((RectTransform)b.transform, new Vector2(0.5f, 1f), new Vector2(0f, by), new Vector2(430f, 64f));
+                by -= 82f;
             }
+            if (SaveSystem.HasSave) TitleButton("Continuer l'histoire", SaveSystem.ContinueGame);
             TitleButton("Nouvelle partie", () =>
             {
                 titlePanel.SetActive(false);
@@ -731,8 +777,11 @@ namespace LastWorld
                 SaveSystem.NewGame();
                 StoryEvents.NewGame();
             });
-            if (SaveSystem.HasSave) TitleButton("Continuer", SaveSystem.ContinueGame);
             TitleButton("Quitter", Quit);
+            var footer = MakeText(title, "ZQSD  SE DÉPLACER     ·     SOURIS  REGARDER     ·     H  COMMANDES", 18, TextAnchor.LowerLeft, new Color(0.7f, 0.8f, 0.8f));
+            Place(footer.rectTransform, new Vector2(0.1f, 0f), new Vector2(0f, 40f), new Vector2(1200f, 35f));
+            var ver = MakeText(title, $"v{Application.version}", 18, TextAnchor.LowerRight, new Color(1f, 1f, 1f, 0.5f));
+            Place(ver.rectTransform, new Vector2(1f, 0f), new Vector2(-24f, 36f), new Vector2(200f, 26f));
 
             // Pause
             var pause = FullPanel("Pause", new Color(0f, 0f, 0f, 0.6f));

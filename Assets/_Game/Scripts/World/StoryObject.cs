@@ -21,25 +21,25 @@ namespace LastWorld
         public Color glowColor = new(0.5f, 1f, 0.85f);
 
         bool used;
-        string SaveKey => $"so_{id}";
+        string SaveKey => $"so_done_{id}";
+        string LegacyKey => $"so_{id}";
 
         public override string Prompt => prompt;
         public override bool Available => !used && (gateStep < 0 || QuestManager.Instance && QuestManager.Instance.IsAtStep(gateQuest, gateStep));
 
         void Start()
         {
-            if (oneShot && SaveSystem.IsChestOpened(SaveKey)) SetUsed();
+            // Legacy saves wrote the flag before the dialogue; a new flag means the quest event finished.
+            bool legacyFinished = SaveSystem.IsChestOpened(LegacyKey) &&
+                (gateStep < 0 || !QuestManager.Instance || !QuestManager.Instance.IsAtStep(gateQuest, gateStep));
+            if (oneShot && (SaveSystem.IsChestOpened(SaveKey) || legacyFinished)) SetUsed();
             else SetGlow(1f);
         }
 
         public override void Interact()
         {
             if (used) return;
-            if (oneShot)
-            {
-                SetUsed();
-                SaveSystem.MarkChest(SaveKey);
-            }
+            if (oneShot) SetUsed();
             AudioManager.Play("quest");
             CombatFX.Burst(transform.position + Vector3.up, glowColor, 1.5f, 35);
             if (!string.IsNullOrEmpty(cinematicId) && CinematicDirector.Has(cinematicId)) CinematicDirector.Play(cinematicId, Scene);
@@ -56,6 +56,9 @@ namespace LastWorld
         void Report()
         {
             if (!string.IsNullOrEmpty(reportId)) QuestManager.ReportInteract(reportId);
+            // Commit the one-shot flag only after the quest event (and its save) has completed.
+            // Quitting during a cinematic or dialogue will let the player retry the interaction.
+            if (oneShot) SaveSystem.MarkChest(SaveKey);
         }
 
         void SetUsed()

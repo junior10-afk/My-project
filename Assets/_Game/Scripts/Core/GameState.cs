@@ -31,10 +31,18 @@ namespace LastWorld
 
         void Update()
         {
+            // Menus and dialogue suspend the world, but the UI still uses unscaled time.
+            // Cinematics keep running even when one starts from a dialogue callback.
+            if (UIOpen && !Cinematic)
+            {
+                Time.timeScale = 0f;
+                Time.fixedDeltaTime = 0.02f;
+                return;
+            }
             if (hitStop != null) return;
             float target = Time.unscaledTime < slowMoUntil ? slowMoScale : 1f;
             Time.timeScale = Mathf.MoveTowards(Time.timeScale, target, Time.unscaledDeltaTime * 4f);
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            Time.fixedDeltaTime = 0.02f * Mathf.Max(0.01f, Time.timeScale);
         }
 
         public static void HitStop(float duration)

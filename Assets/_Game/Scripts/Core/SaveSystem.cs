@@ -55,9 +55,10 @@ namespace LastWorld
         static Data pending;
 
         public static string FilePath => Path.Combine(Application.persistentDataPath, "lastworld_save.json");
-        public static bool HasSave => File.Exists(FilePath);
+        public static bool HasSave => File.Exists(FilePath) || File.Exists(FilePath + ".bak");
 
         float autosaveTimer;
+        bool recoveredFromBackup;
         public bool savingEnabled;
 
         void Awake()
@@ -67,21 +68,41 @@ namespace LastWorld
             chests.Clear();
             orbs.Clear();
             pending = null;
+            recoveredFromBackup = false;
             if (ContinueRequested && HasSave)
             {
-                try
+                try { pending = ReadData(FilePath); }
+                catch (Exception e)
                 {
-                    pending = JsonUtility.FromJson<Data>(File.ReadAllText(FilePath));
+                    Debug.LogWarning($"[Save] Primary save could not be read: {e.Message}");
+                    try
+                    {
+                        pending = ReadData(FilePath + ".bak");
+                        recoveredFromBackup = true;
+                        Debug.LogWarning("[Save] Recovered the previous save from backup.");
+                    }
+                    catch (Exception backupError)
+                    {
+                        Debug.LogWarning($"[Save] Backup could not be read: {backupError.Message}");
+                        ContinueRequested = false;
+                    }
+                }
+                if (pending != null)
+                {
                     foreach (var w in pending.waypoints) waypoints.Add(w);
                     foreach (var c in pending.chests) chests.Add(c);
                     foreach (var o in pending.orbs) orbs.Add(o);
                 }
-                catch (Exception e)
-                {
-                    Debug.LogWarning($"[Save] Could not read save: {e.Message}");
-                    pending = null;
-                }
             }
+        }
+
+        static Data ReadData(string path)
+        {
+            var data = JsonUtility.FromJson<Data>(File.ReadAllText(path));
+            if (data == null || data.members == null || data.members.Count == 0 || data.quests == null || data.quests.Count == 0 ||
+                data.items == null || data.waypoints == null || data.chests == null || data.orbs == null)
+                throw new InvalidDataException("Incomplete save data");
+            return data;
         }
 
         void Start()
@@ -150,7 +171,17 @@ namespace LastWorld
             d.orbs.AddRange(orbs);
             try
             {
-                File.WriteAllText(FilePath, JsonUtility.ToJson(d, true));
+                string temporary = FilePath + ".tmp";
+                File.WriteAllText(temporary, JsonUtility.ToJson(d, true));
+                if (Instance.recoveredFromBackup)
+                {
+                    // Keep the known-good backup: replacing a corrupt primary would overwrite it.
+                    File.Copy(temporary, FilePath, true);
+                    File.Delete(temporary);
+                    Instance.recoveredFromBackup = false;
+                }
+                else if (File.Exists(FilePath)) File.Replace(temporary, FilePath, FilePath + ".bak");
+                else File.Move(temporary, FilePath);
             }
             catch (Exception e)
             {
@@ -166,7 +197,8 @@ namespace LastWorld
 
         public static void NewGame()
         {
-            if (HasSave) File.Delete(FilePath);
+            if (File.Exists(FilePath)) File.Delete(FilePath);
+            if (File.Exists(FilePath + ".bak")) File.Delete(FilePath + ".bak");
             if (Instance) Instance.savingEnabled = true;
             Save();
         }

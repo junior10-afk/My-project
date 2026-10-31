@@ -60,6 +60,12 @@ namespace LastWorld.EditorTools
             BuildSanctuary();
             BuildSiege(spawn);
             BuildCompanionsAndGates(spawn);
+            var anchors = Group("Sites cinématiques");
+            foreach (var site in Sites)
+            {
+                var anchor = Group(site.Key, anchors);
+                anchor.position = site.Value;
+            }
 
             terrain.Flush();
             var tc = terrain.GetComponent<TerrainCollider>();
@@ -67,6 +73,54 @@ namespace LastWorld.EditorTools
             EditorUtility.SetDirty(data);
             PlayerSettings.bundleVersion = "1.0.0";
             Debug.Log($"[ChapterBuilder] Chapters II–X built ({Sites.Count} sites).");
+        }
+
+        /// <summary>Restores cinematic locations after a domain reload, without rebuilding the world.</summary>
+        public static bool RestoreSites(Terrain world)
+        {
+            var chapters = GameObject.Find("Gameplay/Chapitres");
+            if (!chapters || !world) return false;
+            var anchors = chapters.transform.Find("Sites cinématiques");
+            if (anchors)
+            {
+                Sites.Clear();
+                foreach (Transform site in anchors) Sites[site.name] = site.position;
+            }
+            else
+            {
+                // Scenes created before site anchors existed: recover from the persistent quest markers.
+                var marks = new Dictionary<string, Vector3>();
+                foreach (var marker in chapters.GetComponentsInChildren<QuestMarkerAnchor>(true))
+                    marks[marker.id] = marker.transform.position;
+                string[] required = { "cendrelune", "forge", "citadel", "refuge", "sceau_summit", "SanctuaryMark", "ysmere" };
+                if (required.Any(id => !marks.ContainsKey(id))) return false;
+                Vector3 Ground(float x, float z) => new(x, world.SampleHeight(new Vector3(x, 0f, z)) + world.transform.position.y, z);
+                Sites.Clear();
+                Sites["cendrelune"] = marks["cendrelune"];
+                Sites["forge_rim"] = marks["forge"];
+                Sites["forge"] = Ground(marks["forge"].x, marks["forge"].z + 34f);
+                Sites["archives"] = Ground(marks["ysmere"].x - 112f, marks["ysmere"].z);
+                Sites["citadel"] = marks["citadel"];
+                Sites["valdrak"] = Ground(marks["citadel"].x + 40f, marks["citadel"].z);
+                Sites["refuge"] = marks["refuge"];
+                Sites["sceau_summit"] = marks["sceau_summit"];
+                Sites["sanctuaire_mark"] = marks["SanctuaryMark"];
+                Sites["sanctuaire"] = marks["SanctuaryMark"] + Vector3.forward * 22f;
+                var altar = GameObject.Find("Autel des Vents");
+                if (!altar) return false;
+                Sites["camp"] = altar.transform.position;
+                // Persist recovered positions so subsequent editor sessions have stable anchors.
+                var saved = new GameObject("Sites cinématiques").transform;
+                saved.SetParent(chapters.transform, false);
+                foreach (var site in Sites)
+                {
+                    var anchor = new GameObject(site.Key).transform;
+                    anchor.SetParent(saved, false);
+                    anchor.position = site.Value;
+                }
+            }
+            string[] cinematicSites = { "forge", "cendrelune", "archives", "citadel", "valdrak", "refuge", "sceau_summit", "sanctuaire", "sanctuaire_mark", "camp" };
+            return cinematicSites.All(Sites.ContainsKey);
         }
 
         // ================================================================ Terrain shaping
