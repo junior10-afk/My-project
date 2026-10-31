@@ -65,6 +65,7 @@ namespace LastWorld
         Transform player;
         bool summoned;
         bool announced;
+        float farAccum;
 
         Canvas barCanvas;
         Text label;
@@ -121,8 +122,16 @@ namespace LastWorld
         void Update()
         {
             float dt = Time.deltaTime;
-            stateTime += dt;
             if (!player && PlayerController.Instance) player = PlayerController.Instance.transform;
+            // Idle enemies far from the hero are only updated a few times per second (the island holds ~70 of them)
+            if (state == State.Idle && player && (player.position - transform.position).sqrMagnitude > 110f * 110f)
+            {
+                farAccum += dt;
+                if (farAccum < 0.2f) return;
+                dt = farAccum;
+                farAccum = 0f;
+            }
+            stateTime += dt;
 
             if (state == State.Dead)
             {

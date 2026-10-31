@@ -241,6 +241,7 @@ namespace LastWorld.EditorTools
             go.transform.SetPositionAndRotation(center, Quaternion.Euler(pitch, yaw, 0f));
             go.AddComponent<MeshFilter>().sharedMesh = CubeMesh(size, tile);
             go.AddComponent<MeshRenderer>().sharedMaterial = mat;
+            GameObjectUtility.SetStaticEditorFlags(go, StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccludeeStatic); // merged into a few draw calls
             if (collider)
             {
                 var bc = go.AddComponent<BoxCollider>();

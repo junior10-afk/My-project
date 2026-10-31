@@ -89,6 +89,7 @@ namespace LastWorld.EditorTools
             fx.additive = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Game/Materials/FX_Fire.mat");
             fx.alphaBlend = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Game/Materials/FX_Smoke.mat");
             go.AddComponent<DamageNumbers>();
+            go.AddComponent<PerformanceManager>();
             go.AddComponent<GameUI>();
             return go;
         }

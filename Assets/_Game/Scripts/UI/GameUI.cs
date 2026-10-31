@@ -751,7 +751,7 @@ namespace LastWorld
             PauseButton("Carte (M)", () => Toggle(mapPanel, RefreshMap));
             PauseButton("Quêtes (J)", () => Toggle(questsPanel, RefreshQuests));
             PauseButton("Quitter le jeu", () => { SaveSystem.Save(); Quit(); });
-            var cfg = Box(pause, "Settings", new Vector2(0.5f, 0.5f), new Vector2(260f, 20f), new Vector2(480f, 330f), Panel);
+            var cfg = Box(pause, "Settings", new Vector2(0.5f, 0.5f), new Vector2(260f, 20f), new Vector2(480f, 392f), Panel);
             var cfgTitle = MakeText(cfg, "Paramètres", 28, TextAnchor.UpperCenter, Accent);
             Place(cfgTitle.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -14f), new Vector2(400f, 40f));
             var camCtl = FindAnyObjectByType<ThirdPersonCamera>();
@@ -759,6 +759,11 @@ namespace LastWorld
             Slider(cfg, "Sensibilité souris", -80f, 0.03f, 0.4f, camCtl ? camCtl.mouseSensitivity : 0.12f, v => { if (camCtl) camCtl.mouseSensitivity = v; });
             Slider(cfg, "Volume général", -160f, 0f, 1f, audio ? audio.masterVolume : 0.8f, v => { if (audio) audio.masterVolume = v; });
             Slider(cfg, "Musique", -240f, 0f, 1f, audio ? audio.musicVolume : 0.35f, v => { if (audio) audio.musicVolume = v; });
+            var qualityButton = MakeButton(cfg, "", () => { PerformanceManager.Cycle(); }, 400f, 40f);
+            Place((RectTransform)qualityButton.transform, new Vector2(0.5f, 1f), new Vector2(0f, -322f), new Vector2(400f, 40f));
+            var qualityText = qualityButton.GetComponentInChildren<Text>();
+            qualityButton.onClick.AddListener(() => qualityText.text = "Qualité graphique : " + PerformanceManager.PresetName + "  (clic pour changer)");
+            qualityText.text = "Qualité graphique : " + PerformanceManager.PresetName + "  (clic pour changer)";
 
             // Map
             var map = FullPanel("Carte", new Color(0.02f, 0.03f, 0.05f, 0.92f));

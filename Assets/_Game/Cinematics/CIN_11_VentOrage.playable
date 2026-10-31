@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9125357189494769520
+--- !u!114 &-9215721276640802687
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,123 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
   m_Name: CinemachineShot
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: Le fragment monte
+  DisplayName: Vers le centre
   VirtualCamera:
-    exposedName: 4e964a8d4f3a82e4b93f1798e4fb6570
+    exposedName: 311525d40d30af94c8bc878ac6854aea
     defaultValue: {fileID: 0}
---- !u!114 &-8546678702427299933
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: sound:burst
-  essential: 0
---- !u!114 &-8463358368505013257
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: player:show
-  essential: 1
---- !u!114 &-8430221768340343628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: "hide:Fragment Mar\xE9e"
-  essential: 1
---- !u!114 &-8277706227208773274
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: show:Fragment Braise
-  essential: 0
---- !u!114 &-7848203688347762403
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: Aelis
-  text: "Ils chantent\u2026 tous les quatre. Ensemble."
---- !u!114 &-7479032976376679886
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: Torvan
-  text: "Hmpf. Quatre vents libres. Je n'aurais jamais cru voir \xE7a de mon vivant."
---- !u!114 &-6496906532781418504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: hide:Fragment Braise
-  essential: 1
---- !u!114 &-5936143084025702438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: hide:Fragment
-  essential: 1
---- !u!114 &-3617298569161127046
+--- !u!114 &-8330548369906254258
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,9 +30,93 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
   DisplayName: Les quatre fragments
   VirtualCamera:
-    exposedName: 9b4349988178619458f6b96f8f2b2350
+    exposedName: a4e22d700c2df44489633e5ee36306c4
     defaultValue: {fileID: 0}
---- !u!114 &-2986207383850882142
+--- !u!114 &-6548230517468593407
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: banner:Les quatre vents sont libres
+  essential: 0
+--- !u!114 &-6395938266599361777
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: show:Torvan
+  essential: 1
+--- !u!114 &-6297022111632817357
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: Aelis
+  text: "Ils chantent\u2026 tous les quatre. Ensemble."
+--- !u!114 &-6134145139249913959
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: hide:Fragment
+  essential: 1
+--- !u!114 &-6101973774305773014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: "hide:Fragment Mar\xE9e"
+  essential: 1
+--- !u!114 &-3964905250316886530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: sound:burst
+  essential: 0
+--- !u!114 &-3405904256980368724
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,10 +140,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 7
     m_ClipIn: 0
-    m_Asset: {fileID: -7848203688347762403}
+    m_Asset: {fileID: -6297022111632817357}
     m_Duration: 3.5999999046325684
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -2986207383850882142}
+    m_ParentTrack: {fileID: -3405904256980368724}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -237,10 +209,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 13
     m_ClipIn: 0
-    m_Asset: {fileID: -7479032976376679886}
+    m_Asset: {fileID: 6241400335452236427}
     m_Duration: 4
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -2986207383850882142}
+    m_ParentTrack: {fileID: -3405904256980368724}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -306,10 +278,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 18.600000381469727
     m_ClipIn: 0
-    m_Asset: {fileID: -9026750831859527}
+    m_Asset: {fileID: 6717439600309238221}
     m_Duration: 4.400000095367432
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -2986207383850882142}
+    m_ParentTrack: {fileID: -3405904256980368724}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -374,7 +346,90 @@ MonoBehaviour:
     m_DisplayName: "Ils pointent tous vers l\u2026"
   m_Markers:
     m_Objects: []
---- !u!114 &-2255945233830541094
+--- !u!114 &-3183373000688716774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
+  DisplayName: Torvan
+  VirtualCamera:
+    exposedName: f60f9b22296024c48939dd2bd1578f05
+    defaultValue: {fileID: 0}
+--- !u!114 &-2740863528551971423
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: place:PlayerMark
+  essential: 1
+--- !u!114 &-2358804504763685629
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: show:Fragment Vent
+  essential: 0
+--- !u!114 &-741660675903715969
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
+  m_Name: FadeClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
+  color: {r: 1, g: 1, b: 1, a: 1}
+  from: 0
+  to: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
+  m_Name: CIN_11_VentOrage
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.TimelineAsset
+  m_Version: 0
+  m_Tracks:
+  - {fileID: 6697651842782356183}
+  - {fileID: -3405904256980368724}
+  - {fileID: 8063680211066553511}
+  - {fileID: 9056718602927016855}
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}
+--- !u!114 &248246589769581591
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -389,7 +444,392 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 1}
   from: 1
   to: 0
---- !u!114 &-2185823302659873139
+--- !u!114 &491478227369378765
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
+  m_Name: FadeClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
+  color: {r: 1, g: 1, b: 1, a: 1}
+  from: 1
+  to: 0
+--- !u!114 &844003235285446619
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: "show:Fragment Mar\xE9e"
+  essential: 0
+--- !u!114 &1509416780000940789
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: hide:Fragment Braise
+  essential: 1
+--- !u!114 &2128879767822575209
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
+  DisplayName: Le fragment monte
+  VirtualCamera:
+    exposedName: 7b0346177bd9155448b7eeaf8ee48a0f
+    defaultValue: {fileID: 0}
+--- !u!114 &3106450312529195868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: show:Fragment Braise
+  essential: 0
+--- !u!114 &4290069204699552943
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: hide:Fragment Vent
+  essential: 1
+--- !u!114 &4776937775822731066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: show:Fragment
+  essential: 0
+--- !u!114 &6241400335452236427
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: Torvan
+  text: "Hmpf. Quatre vents libres. Je n'aurais jamais cru voir \xE7a de mon vivant."
+--- !u!114 &6355888025606037771
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: burst:UnionFX:Anemo
+  essential: 0
+--- !u!114 &6697651842782356183
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05acc715f855ced458d76ee6f8ac6c61, type: 3}
+  m_Name: "Cam\xE9ras"
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineTrack
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: 2128879767822575209}
+    m_Duration: 6.5
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6697651842782356183}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: 0.6000000238418579
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Le fragment monte
+  - m_Version: 1
+    m_Start: 5.899999976158142
+    m_ClipIn: 0
+    m_Asset: {fileID: -8330548369906254258}
+    m_Duration: 6.600000023841858
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6697651842782356183}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0.6000000238418579
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Les quatre fragments
+  - m_Version: 1
+    m_Start: 12.699999809265137
+    m_ClipIn: 0
+    m_Asset: {fileID: -3183373000688716774}
+    m_Duration: 5.5
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6697651842782356183}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: 0.4999990463256836
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Torvan
+  - m_Version: 1
+    m_Start: 17.700000762939453
+    m_ClipIn: 0
+    m_Asset: {fileID: -9215721276640802687}
+    m_Duration: 6
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6697651842782356183}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0.4999990463256836
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Vers le centre
+  m_Markers:
+    m_Objects: []
+  TrackPriority: 0
+--- !u!114 &6717439600309238221
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: Aelis
+  text: "Ils pointent tous vers le centre de l'\xEEle."
+--- !u!114 &8011862658170656420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: player:show
+  essential: 1
+--- !u!114 &8063680211066553511
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -413,10 +853,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -2255945233830541094}
+    m_Asset: {fileID: 248246589769581591}
     m_Duration: 1.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -2185823302659873139}
+    m_ParentTrack: {fileID: 8063680211066553511}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -482,10 +922,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 12
     m_ClipIn: 0
-    m_Asset: {fileID: 7823994209524323619}
+    m_Asset: {fileID: -741660675903715969}
     m_Duration: 0.699999988079071
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -2185823302659873139}
+    m_ParentTrack: {fileID: 8063680211066553511}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -551,10 +991,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 12.699999809265137
     m_ClipIn: 0
-    m_Asset: {fileID: 8144290694903214625}
+    m_Asset: {fileID: 491478227369378765}
     m_Duration: 1.2999999523162842
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -2185823302659873139}
+    m_ParentTrack: {fileID: 8063680211066553511}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -619,7 +1059,7 @@ MonoBehaviour:
     m_DisplayName: Fondu entrant
   m_Markers:
     m_Objects: []
---- !u!114 &-1926486630867582221
+--- !u!114 &8775234628500842481
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -631,9 +1071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
   m_Name: CinematicActionClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: place:PlayerMark
-  essential: 1
---- !u!114 &-1530817584375134020
+  action: anim:player:Interact:2.6
+  essential: 0
+--- !u!114 &9056718602927016855
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -657,10 +1097,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -1926486630867582221}
+    m_Asset: {fileID: -2740863528551971423}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -726,10 +1166,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -8463358368505013257}
+    m_Asset: {fileID: 8011862658170656420}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -795,10 +1235,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 1016798277805199220}
+    m_Asset: {fileID: -6395938266599361777}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -864,10 +1304,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 1.2999999523162842
     m_ClipIn: 0
-    m_Asset: {fileID: 7362956843720005914}
+    m_Asset: {fileID: 4776937775822731066}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -933,10 +1373,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 1.399999976158142
     m_ClipIn: 0
-    m_Asset: {fileID: 7263327164235935164}
+    m_Asset: {fileID: 8775234628500842481}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1002,10 +1442,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 6.5
     m_ClipIn: 0
-    m_Asset: {fileID: -8277706227208773274}
+    m_Asset: {fileID: 3106450312529195868}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1071,10 +1511,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 6.5
     m_ClipIn: 0
-    m_Asset: {fileID: -487050384243699722}
+    m_Asset: {fileID: 844003235285446619}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1140,10 +1580,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 6.5
     m_ClipIn: 0
-    m_Asset: {fileID: 6139162952588892314}
+    m_Asset: {fileID: -2358804504763685629}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1209,10 +1649,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 11.800000190734863
     m_ClipIn: 0
-    m_Asset: {fileID: 2326179499628195774}
+    m_Asset: {fileID: 6355888025606037771}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1278,10 +1718,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 11.800000190734863
     m_ClipIn: 0
-    m_Asset: {fileID: -8546678702427299933}
+    m_Asset: {fileID: -3964905250316886530}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1347,10 +1787,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 12.5
     m_ClipIn: 0
-    m_Asset: {fileID: -5936143084025702438}
+    m_Asset: {fileID: -6134145139249913959}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1416,10 +1856,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 12.5
     m_ClipIn: 0
-    m_Asset: {fileID: -6496906532781418504}
+    m_Asset: {fileID: 1509416780000940789}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1485,10 +1925,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 12.5
     m_ClipIn: 0
-    m_Asset: {fileID: -8430221768340343628}
+    m_Asset: {fileID: -6101973774305773014}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1554,10 +1994,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 12.5
     m_ClipIn: 0
-    m_Asset: {fileID: 1862874362310212373}
+    m_Asset: {fileID: 4290069204699552943}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1623,10 +2063,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 18.399999618530273
     m_ClipIn: 0
-    m_Asset: {fileID: 1843896014517479319}
+    m_Asset: {fileID: -6548230517468593407}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -1530817584375134020}
+    m_ParentTrack: {fileID: 9056718602927016855}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1691,443 +2131,3 @@ MonoBehaviour:
     m_DisplayName: banner:Les quatre vents sont libres
   m_Markers:
     m_Objects: []
---- !u!114 &-487050384243699722
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: "show:Fragment Mar\xE9e"
-  essential: 0
---- !u!114 &-9026750831859527
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: Aelis
-  text: "Ils pointent tous vers le centre de l'\xEEle."
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
-  m_Name: CIN_11_VentOrage
-  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.TimelineAsset
-  m_Version: 0
-  m_Tracks:
-  - {fileID: 287166830919563186}
-  - {fileID: -2986207383850882142}
-  - {fileID: -2185823302659873139}
-  - {fileID: -1530817584375134020}
-  m_FixedDuration: 0
-  m_EditorSettings:
-    m_Framerate: 60
-    m_ScenePreview: 1
-  m_DurationMode: 0
-  m_MarkerTrack: {fileID: 0}
---- !u!114 &287166830919563186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05acc715f855ced458d76ee6f8ac6c61, type: 3}
-  m_Name: "Cam\xE9ras"
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineTrack
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 0
-    m_ClipIn: 0
-    m_Asset: {fileID: -9125357189494769520}
-    m_Duration: 6.5
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 287166830919563186}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: 0.6000000238418579
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Le fragment monte
-  - m_Version: 1
-    m_Start: 5.899999976158142
-    m_ClipIn: 0
-    m_Asset: {fileID: -3617298569161127046}
-    m_Duration: 6.600000023841858
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 287166830919563186}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0.6000000238418579
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Les quatre fragments
-  - m_Version: 1
-    m_Start: 12.699999809265137
-    m_ClipIn: 0
-    m_Asset: {fileID: 7230120540123399766}
-    m_Duration: 5.5
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 287166830919563186}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: 0.4999990463256836
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Torvan
-  - m_Version: 1
-    m_Start: 17.700000762939453
-    m_ClipIn: 0
-    m_Asset: {fileID: 4119613032827523633}
-    m_Duration: 6
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 287166830919563186}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0.4999990463256836
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Vers le centre
-  m_Markers:
-    m_Objects: []
-  TrackPriority: 0
---- !u!114 &1016798277805199220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: show:Torvan
-  essential: 1
---- !u!114 &1843896014517479319
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: banner:Les quatre vents sont libres
-  essential: 0
---- !u!114 &1862874362310212373
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: hide:Fragment Vent
-  essential: 1
---- !u!114 &2326179499628195774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: burst:UnionFX:Anemo
-  essential: 0
---- !u!114 &4119613032827523633
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: Vers le centre
-  VirtualCamera:
-    exposedName: a5730f757b5ccd940aa90c0356016397
-    defaultValue: {fileID: 0}
---- !u!114 &6139162952588892314
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: show:Fragment Vent
-  essential: 0
---- !u!114 &7230120540123399766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: Torvan
-  VirtualCamera:
-    exposedName: 82c9ee3fa4a713846adb9888b346eeb9
-    defaultValue: {fileID: 0}
---- !u!114 &7263327164235935164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: anim:player:Interact:2.6
-  essential: 0
---- !u!114 &7362956843720005914
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: show:Fragment
-  essential: 0
---- !u!114 &7823994209524323619
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
-  m_Name: FadeClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
-  color: {r: 1, g: 1, b: 1, a: 1}
-  from: 0
-  to: 1
---- !u!114 &8144290694903214625
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
-  m_Name: FadeClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
-  color: {r: 1, g: 1, b: 1, a: 1}
-  from: 1
-  to: 0

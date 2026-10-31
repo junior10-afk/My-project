@@ -1,6 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9146400578797093295
+--- !u!114 &-8784520934138436166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
+  m_Name: FadeClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
+  color: {r: 1, g: 1, b: 1, a: 1}
+  from: 1
+  to: 0
+--- !u!114 &-8648771736204176893
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,791 +27,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
   m_Name: CinematicActionClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: clearboss:boss_final
-  essential: 1
---- !u!114 &-8888586739761716536
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520b3db56792f7c45a1b3867aff83727, type: 3}
-  m_Name: Sous-titres
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleTrack
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 1
-    m_ClipIn: 0
-    m_Asset: {fileID: -2126897199089339196}
-    m_Duration: 3.799999952316284
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: "Je sais ce que \xE7a co\xFBte.\u2026"
-  - m_Version: 1
-    m_Start: 4.900000095367432
-    m_ClipIn: 0
-    m_Asset: {fileID: -3033994698932577026}
-    m_Duration: 3.200000047683716
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: "Aelis\u2026 non. Allez, dis-m\u2026"
-  - m_Version: 1
-    m_Start: 8.199999809265137
-    m_ClipIn: 0
-    m_Asset: {fileID: -8272895092133365560}
-    m_Duration: 3
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Merci. Pour chaque jour.
-  - m_Version: 1
-    m_Start: 11.5
-    m_ClipIn: 0
-    m_Asset: {fileID: 219255052074892054}
-    m_Duration: 3.4000000953674316
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: NON ! Aelith !
-  - m_Version: 1
-    m_Start: 16.5
-    m_ClipIn: 0
-    m_Asset: {fileID: -4829717767717681229}
-    m_Duration: 4.599999904632568
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: "Aerendal surv\xE9cut. Le Sc\u2026"
-  - m_Version: 1
-    m_Start: 21.399999618530273
-    m_ClipIn: 0
-    m_Asset: {fileID: -1023059304545677566}
-    m_Duration: 4.599999904632568
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: "Aelith dort, et le monde\u2026"
-  - m_Version: 1
-    m_Start: 27
-    m_ClipIn: 0
-    m_Asset: {fileID: 8643117621416096006}
-    m_Duration: 4
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: LE DERNIER MONDE
-  - m_Version: 1
-    m_Start: 31.200000762939453
-    m_ClipIn: 0
-    m_Asset: {fileID: -7533320515422036082}
-    m_Duration: 4
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: "Chapitres I \xE0 X \u2014 l'hist\u2026"
-  - m_Version: 1
-    m_Start: 35.400001525878906
-    m_ClipIn: 0
-    m_Asset: {fileID: -8676309124254461997}
-    m_Duration: 4
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: "Terrains, personnages, a\u2026"
-  - m_Version: 1
-    m_Start: 39.599998474121094
-    m_ClipIn: 0
-    m_Asset: {fileID: 2198044012933018952}
-    m_Duration: 4
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: "Moteur : Unity \u2014 URP, Ci\u2026"
-  - m_Version: 1
-    m_Start: 43.79999923706055
-    m_ClipIn: 0
-    m_Asset: {fileID: -4136720882995783390}
-    m_Duration: 4
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -8888586739761716536}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: "Merci d'avoir jou\xE9."
-  m_Markers:
-    m_Objects: []
---- !u!114 &-8676309124254461997
+  action: anim:player:Burst:1.5
+  essential: 0
+--- !u!114 &-8321472405535513787
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -809,8 +42,22 @@ MonoBehaviour:
   m_Name: SubtitleClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
   speaker: 
-  text: 'Terrains, personnages, animations : Poly Haven (CC0), MakeHuman / MPFB, Quaternius (CC0)'
---- !u!114 &-8272895092133365560
+  text: LE DERNIER MONDE
+--- !u!114 &-8019427343329440724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: 
+  text: "Aelith dort, et le monde l'oublie peu \xE0 peu. Kael, lui, n'oublie rien."
+--- !u!114 &-7766281134788036486
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -823,8 +70,8 @@ MonoBehaviour:
   m_Name: SubtitleClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
   speaker: Aelis
-  text: Merci. Pour chaque jour.
---- !u!114 &-8164397367434427518
+  text: "Je sais ce que \xE7a co\xFBte. Je le fais quand m\xEAme."
+--- !u!114 &-7359313339056429953
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -848,10 +95,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -7890191213684205578}
+    m_Asset: {fileID: -6415274386672018494}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -917,10 +164,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 8563075809210938310}
+    m_Asset: {fileID: 112982847167225510}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -986,10 +233,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -1283858515968837231}
+    m_Asset: {fileID: -5851574665664448285}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1055,10 +302,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -9146400578797093295}
+    m_Asset: {fileID: -3486185558190732154}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1124,10 +371,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 2856078692497440968}
+    m_Asset: {fileID: 8290614557089696229}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1193,10 +440,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -6877348964054224294}
+    m_Asset: {fileID: -1488484672038040216}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1262,10 +509,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 5183481188803362049}
+    m_Asset: {fileID: 2049470791021379483}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1331,10 +578,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 4932935893508366880}
+    m_Asset: {fileID: -295154773011314046}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1400,10 +647,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 9.5
     m_ClipIn: 0
-    m_Asset: {fileID: 1948139545147189422}
+    m_Asset: {fileID: -8648771736204176893}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1469,10 +716,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 10.5
     m_ClipIn: 0
-    m_Asset: {fileID: 8090751896247057446}
+    m_Asset: {fileID: 514930898393631909}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1538,10 +785,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 15.399999618530273
     m_ClipIn: 0
-    m_Asset: {fileID: 4910909776333496467}
+    m_Asset: {fileID: -5741775571674603132}
     m_Duration: 0.20000000298023224
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -8164397367434427518}
+    m_ParentTrack: {fileID: -7359313339056429953}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1606,7 +853,22 @@ MonoBehaviour:
     m_DisplayName: hide:Kael
   m_Markers:
     m_Objects: []
---- !u!114 &-7890191213684205578
+--- !u!114 &-7246113742435171679
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
+  m_Name: FadeClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
+  color: {r: 1, g: 1, b: 1, a: 1}
+  from: 0
+  to: 1
+--- !u!114 &-6415274386672018494
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1620,7 +882,845 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
   action: time:6.8
   essential: 1
---- !u!114 &-7533320515422036082
+--- !u!114 &-6124511477039550298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520b3db56792f7c45a1b3867aff83727, type: 3}
+  m_Name: Sous-titres
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleTrack
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 1
+    m_ClipIn: 0
+    m_Asset: {fileID: -7766281134788036486}
+    m_Duration: 3.799999952316284
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "Je sais ce que \xE7a co\xFBte.\u2026"
+  - m_Version: 1
+    m_Start: 4.900000095367432
+    m_ClipIn: 0
+    m_Asset: {fileID: 2915164936508149853}
+    m_Duration: 3.200000047683716
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "Aelis\u2026 non. Allez, dis-m\u2026"
+  - m_Version: 1
+    m_Start: 8.199999809265137
+    m_ClipIn: 0
+    m_Asset: {fileID: 3668034385799803834}
+    m_Duration: 3
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Merci. Pour chaque jour.
+  - m_Version: 1
+    m_Start: 11.5
+    m_ClipIn: 0
+    m_Asset: {fileID: -4877590265256090957}
+    m_Duration: 3.4000000953674316
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: NON ! Aelith !
+  - m_Version: 1
+    m_Start: 16.5
+    m_ClipIn: 0
+    m_Asset: {fileID: 5718378456012563694}
+    m_Duration: 4.599999904632568
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "Aerendal surv\xE9cut. Le Sc\u2026"
+  - m_Version: 1
+    m_Start: 21.399999618530273
+    m_ClipIn: 0
+    m_Asset: {fileID: -8019427343329440724}
+    m_Duration: 4.599999904632568
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "Aelith dort, et le monde\u2026"
+  - m_Version: 1
+    m_Start: 27
+    m_ClipIn: 0
+    m_Asset: {fileID: -8321472405535513787}
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: LE DERNIER MONDE
+  - m_Version: 1
+    m_Start: 31.200000762939453
+    m_ClipIn: 0
+    m_Asset: {fileID: -4501041919193025172}
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "Chapitres I \xE0 X \u2014 l'hist\u2026"
+  - m_Version: 1
+    m_Start: 35.400001525878906
+    m_ClipIn: 0
+    m_Asset: {fileID: -5022061835944077036}
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "Terrains, personnages, a\u2026"
+  - m_Version: 1
+    m_Start: 39.599998474121094
+    m_ClipIn: 0
+    m_Asset: {fileID: 7065311716327906900}
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "Moteur : Unity \u2014 URP, Ci\u2026"
+  - m_Version: 1
+    m_Start: 43.79999923706055
+    m_ClipIn: 0
+    m_Asset: {fileID: 908609207531870576}
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6124511477039550298}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "Merci d'avoir jou\xE9."
+  m_Markers:
+    m_Objects: []
+--- !u!114 &-5851574665664448285
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: player:show
+  essential: 1
+--- !u!114 &-5741775571674603132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: hide:Kael
+  essential: 1
+--- !u!114 &-5022061835944077036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: 
+  text: 'Terrains, personnages, animations : Poly Haven (CC0), MakeHuman / MPFB, Quaternius (CC0)'
+--- !u!114 &-4877590265256090957
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: Kael
+  text: NON ! Aelith !
+--- !u!114 &-4501041919193025172
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1634,21 +1734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
   speaker: 
   text: "Chapitres I \xE0 X \u2014 l'histoire d'Aelis, de Ka\xEFra, de Nerys, de Torvan et de Kael"
---- !u!114 &-6877348964054224294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: show:Nerys
-  essential: 1
---- !u!114 &-6494632405062826474
+--- !u!114 &-4439251177856140296
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1672,10 +1758,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -4147372519949064760}
+    m_Asset: {fileID: 3160842207809077264}
     m_Duration: 1.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -6494632405062826474}
+    m_ParentTrack: {fileID: -4439251177856140296}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1741,10 +1827,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 13
     m_ClipIn: 0
-    m_Asset: {fileID: -2420132730250505955}
+    m_Asset: {fileID: -7246113742435171679}
     m_Duration: 2.200000047683716
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -6494632405062826474}
+    m_ParentTrack: {fileID: -4439251177856140296}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1810,10 +1896,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 15.399999618530273
     m_ClipIn: 0
-    m_Asset: {fileID: 2522655831457844980}
+    m_Asset: {fileID: -8784520934138436166}
     m_Duration: 2
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -6494632405062826474}
+    m_ParentTrack: {fileID: -4439251177856140296}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1879,10 +1965,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 25
     m_ClipIn: 0
-    m_Asset: {fileID: -779570483685846477}
+    m_Asset: {fileID: 8337406365098461495}
     m_Duration: 1.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -6494632405062826474}
+    m_ParentTrack: {fileID: -4439251177856140296}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -1948,10 +2034,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 27
     m_ClipIn: 0
-    m_Asset: {fileID: -5839815732226438812}
+    m_Asset: {fileID: 1613755572651137640}
     m_Duration: 22
     m_TimeScale: 1
-    m_ParentTrack: {fileID: -6494632405062826474}
+    m_ParentTrack: {fileID: -4439251177856140296}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0
@@ -2016,7 +2102,7 @@ MonoBehaviour:
     m_DisplayName: "\xC9cran"
   m_Markers:
     m_Objects: []
---- !u!114 &-5839815732226438812
+--- !u!114 &-3486185558190732154
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2025,70 +2111,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
-  m_Name: FadeClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
-  color: {r: 0, g: 0, b: 0, a: 1}
-  from: 1
-  to: 1
---- !u!114 &-4829717767717681229
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: 
-  text: "Aerendal surv\xE9cut. Le Sceau tient, et ses vents se sont tus de nouveau."
---- !u!114 &-4147372519949064760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
-  m_Name: FadeClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
-  color: {r: 1, g: 1, b: 1, a: 1}
-  from: 1
-  to: 0
---- !u!114 &-4136720882995783390
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: 
-  text: "Merci d'avoir jou\xE9."
---- !u!114 &-3033994698932577026
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: "Ka\xEFra"
-  text: "Aelis\u2026 non. Allez, dis-moi qu'il y a autre chose !"
---- !u!114 &-2726799560814027360
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: clearboss:boss_final
+  essential: 1
+--- !u!114 &-2187527973622113642
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2100,11 +2128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
   m_Name: CinemachineShot
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: Adieux
+  DisplayName: "Le C\u0153ur"
   VirtualCamera:
-    exposedName: b2d414b3f747eca4997c496af9ff8890
+    exposedName: efcbedca698de33469ab5b1fac0963c1
     defaultValue: {fileID: 0}
---- !u!114 &-2420132730250505955
+--- !u!114 &-1488484672038040216
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2113,27 +2141,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
-  m_Name: FadeClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
-  color: {r: 1, g: 1, b: 1, a: 1}
-  from: 0
-  to: 1
---- !u!114 &-2126897199089339196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: Aelis
-  text: "Je sais ce que \xE7a co\xFBte. Je le fais quand m\xEAme."
---- !u!114 &-1770646493855046879
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: show:Nerys
+  essential: 1
+--- !u!114 &-1300589684398248544
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2147,9 +2160,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
   DisplayName: "Aerendal sauv\xE9"
   VirtualCamera:
-    exposedName: 6d6268598af44dd438cbfe3059d0bda8
+    exposedName: be217f834446dfe42a5b7260f2d1f5ea
     defaultValue: {fileID: 0}
---- !u!114 &-1283858515968837231
+--- !u!114 &-295154773011314046
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2161,37 +2174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
   m_Name: CinematicActionClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: player:show
+  action: show:Kael
   essential: 1
---- !u!114 &-1023059304545677566
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: 
-  text: "Aelith dort, et le monde l'oublie peu \xE0 peu. Kael, lui, n'oublie rien."
---- !u!114 &-779570483685846477
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
-  m_Name: FadeClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
-  color: {r: 0, g: 0, b: 0, a: 1}
-  from: 0
-  to: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2206,31 +2190,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.TimelineAsset
   m_Version: 0
   m_Tracks:
-  - {fileID: 7569943730346358527}
-  - {fileID: -8888586739761716536}
-  - {fileID: -6494632405062826474}
-  - {fileID: -8164397367434427518}
+  - {fileID: 8739021637558062511}
+  - {fileID: -6124511477039550298}
+  - {fileID: -4439251177856140296}
+  - {fileID: -7359313339056429953}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 0}
---- !u!114 &219255052074892054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: Kael
-  text: NON ! Aelith !
---- !u!114 &1948139545147189422
+--- !u!114 &112982847167225510
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2242,9 +2212,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
   m_Name: CinematicActionClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: anim:player:Burst:1.5
+  action: place:PlayerMark
+  essential: 1
+--- !u!114 &514930898393631909
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: burst:HeartFX:Anemo
   essential: 0
---- !u!114 &2198044012933018952
+--- !u!114 &908609207531870576
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2257,8 +2241,51 @@ MonoBehaviour:
   m_Name: SubtitleClip
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
   speaker: 
-  text: "Moteur : Unity \u2014 URP, Cinemachine, Timeline"
---- !u!114 &2522655831457844980
+  text: "Merci d'avoir jou\xE9."
+--- !u!114 &1613755572651137640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
+  m_Name: FadeClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
+  color: {r: 0, g: 0, b: 0, a: 1}
+  from: 1
+  to: 1
+--- !u!114 &2049470791021379483
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
+  m_Name: CinematicActionClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
+  action: show:Torvan
+  essential: 1
+--- !u!114 &2915164936508149853
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: "Ka\xEFra"
+  text: "Aelis\u2026 non. Allez, dis-moi qu'il y a autre chose !"
+--- !u!114 &3160842207809077264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2273,7 +2300,65 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   from: 1
   to: 0
---- !u!114 &2856078692497440968
+--- !u!114 &3380860475310821310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
+  DisplayName: Adieux
+  VirtualCamera:
+    exposedName: f6a458329400dbb46b13f950e1df84d7
+    defaultValue: {fileID: 0}
+--- !u!114 &3668034385799803834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: Aelis
+  text: Merci. Pour chaque jour.
+--- !u!114 &5718378456012563694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: 
+  text: "Aerendal surv\xE9cut. Le Sceau tient, et ses vents se sont tus de nouveau."
+--- !u!114 &7065311716327906900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
+  m_Name: SubtitleClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
+  speaker: 
+  text: "Moteur : Unity \u2014 URP, Cinemachine, Timeline"
+--- !u!114 &8290614557089696229
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2287,7 +2372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
   action: "show:Ka\xEFra"
   essential: 1
---- !u!114 &4910909776333496467
+--- !u!114 &8337406365098461495
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2296,56 +2381,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: hide:Kael
-  essential: 1
---- !u!114 &4932935893508366880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: show:Kael
-  essential: 1
---- !u!114 &4990241700013892637
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: "Le C\u0153ur"
-  VirtualCamera:
-    exposedName: 3679d4660d3c8fd4e84243b3c0e5ca3f
-    defaultValue: {fileID: 0}
---- !u!114 &5183481188803362049
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: show:Torvan
-  essential: 1
---- !u!114 &7569943730346358527
+  m_Script: {fileID: 11500000, guid: 36df6fafb157d1344869d44ace74850e, type: 3}
+  m_Name: FadeClip
+  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.FadeClip
+  color: {r: 0, g: 0, b: 0, a: 1}
+  from: 0
+  to: 1
+--- !u!114 &8739021637558062511
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2369,10 +2411,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -2726799560814027360}
+    m_Asset: {fileID: 3380860475310821310}
     m_Duration: 8
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 7569943730346358527}
+    m_ParentTrack: {fileID: 8739021637558062511}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -2420,10 +2462,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 7.5
     m_ClipIn: 0
-    m_Asset: {fileID: 4990241700013892637}
+    m_Asset: {fileID: -2187527973622113642}
     m_Duration: 6.5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 7569943730346358527}
+    m_ParentTrack: {fileID: 8739021637558062511}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0.5
@@ -2471,10 +2513,10 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 15.399999618530273
     m_ClipIn: 0
-    m_Asset: {fileID: -1770646493855046879}
+    m_Asset: {fileID: -1300589684398248544}
     m_Duration: 9
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 7569943730346358527}
+    m_ParentTrack: {fileID: 8739021637558062511}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
@@ -2540,45 +2582,3 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   TrackPriority: 0
---- !u!114 &8090751896247057446
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: burst:HeartFX:Anemo
-  essential: 0
---- !u!114 &8563075809210938310
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade3d5845cb8ed74ca89263e921bd464, type: 3}
-  m_Name: CinematicActionClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.CinematicActionClip
-  action: place:PlayerMark
-  essential: 1
---- !u!114 &8643117621416096006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2fb37c5737f0246becfa8967432f1d, type: 3}
-  m_Name: SubtitleClip
-  m_EditorClassIdentifier: Assembly-CSharp::LastWorld.SubtitleClip
-  speaker: 
-  text: LE DERNIER MONDE
